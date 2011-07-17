@@ -16,7 +16,7 @@ and the keyboard variants with:
 
 so this is how my (correct) keyboard settings look:
 
-{% highlight %}
+{% highlight text %}
 Section "InputClass"
     Identifier         "Keyboard Defaults"
     MatchIsKeyboard    "yes"

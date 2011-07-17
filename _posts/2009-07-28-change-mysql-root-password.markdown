@@ -7,7 +7,7 @@ This is usefull if you have forgotten your mysql root password and you locked yo
 All you need is the root password for the system.
 
 First, stop mysql and then start it in the background with the skip-grant-tables parameter:
-{% highlight ruby %}mysqld_safe --skip-grant-tables &{% endhighlight %}
+{% highlight bash %}mysqld_safe --skip-grant-tables &{% endhighlight %}
 
 Then login to mysql as root (you don't need a pass anymore)
 {% highlight bash %}mysql -uroot{% endhighlight %}

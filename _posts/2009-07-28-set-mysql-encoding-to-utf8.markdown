@@ -11,7 +11,7 @@ Before doing the following make sure you backup any databases as this could poss
 
 So to set everything to utf8 encoding in mysql add the following lines to the [mysqld] section of my.cnf
 
-{% highlight %}
+{% highlight text %}
 init-connect = 'SET NAMES utf8'
 character-set-server = utf8
 collation-server = utf8_general_ci
@@ -20,7 +20,7 @@ default-collation = utf8_general_ci
 {% endhighlight %}
 
 Also you need the following line under the [client] section of my.cnf
-{% highlight %}
+{% highlight text %}
 default-character-set = utf8
 {% endhighlight %}
 
