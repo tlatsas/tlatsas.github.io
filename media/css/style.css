@@ -1,1 +1,43 @@
-div.highlight { background-color: #272822; color: #f8f8f2; }
+
+/* code bg and plaintext */
+div.highlight {
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 0.5em;
+    margin: 0.5em 0em;
+    border: 1px dashed #d4d4d4;
+}
+
+/* basic layout */
+
+body {
+    font: 90%/1.2em 'Lucida Grande','Lucida Sans Unicode',Verdana,Tahoma,Arial,sans-serif;
+    background-color: #3b3b3b;
+}
+
+#site {
+    width: 1000px;
+    margin: 10px auto;
+    padding: 0;
+}
+
+#header {
+    margin: 1em 0em;
+}
+
+#content {
+    float: left;
+    text-align: left;
+    width: 750px;
+    margin-bottom: 1em;
+    background-color: #fff;
+    padding: 1em;
+}
+
+#footer {
+    clear: both;
+    border-top: solid 1px;
+    padding: 0.5em 0.5em 0em 0.5em;
+    font: 100%;
+}
+

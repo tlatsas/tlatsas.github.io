@@ -6,14 +6,13 @@ layout: master
 <div>
   <h1>Articles</h1>
 </div>
-<div class="clearfix"/>
 
-<div class="posts">
+<div class="post-list">
   {% for post in site.posts %}
     <div class="post">
       <div class="title"><a href="{{ post.url }}">{{ post.title }}</a></div>
       <div class="date">{{ post.date | date: "%B %d, %Y" }}</div>
-      <div class="extract">{{post.content | truncatewords:80}}</div>
+      <div class="extract">{{post.content}}</div>
     </div>
   {% endfor %}
 </div>
