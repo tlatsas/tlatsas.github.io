@@ -1,3 +1,6 @@
+/*
+ *
+ */
 
 /* code bg and plaintext */
 div.highlight {
@@ -8,10 +11,11 @@ div.highlight {
     border: 1px dashed #d4d4d4;
 }
 
-/* basic layout */
 
+/* basic layout */
 body {
-    font: 90%/1.2em 'Lucida Grande','Lucida Sans Unicode',Verdana,Tahoma,Arial,sans-serif;
+    font-family: sans-serif;
+    font-size: 0.9em;
     background-color: #3b3b3b;
 }
 
@@ -41,3 +45,31 @@ body {
     font: 100%;
 }
 
+
+/* formatting */
+.title {
+    border-bottom: 1px solid #bdbaad;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.3em;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.title a {
+    color: #2790B0;
+    text-decoration: none;
+}
+
+.title a:visited {
+    color: #2B4E72;
+    text-decoration: none;
+}
+
+.title a:hover {
+    color: #4E4D4A;
+    text-decoration: underline;
+}
+
+.post { margin-bottom: 2.2em; }
+.post p { margin-bottom: 0.8em; }
+.post ul li { margin-left: 2em; }
