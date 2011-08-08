@@ -15,7 +15,7 @@ div.highlight {
 /* basic layout */
 body {
     font-family: sans-serif;
-    font-size: 0.9em;
+    font-size: 0.8em;
     background-color: #262626;
 }
 
@@ -50,10 +50,14 @@ body {
 .copy { float: right; }
 .cc { font-weight: bold; }
 
-/* formatting */
+/* post formatting */
+.post { margin-bottom: 2.2em; }
+.post p { margin-bottom: 0.8em; }
+.post ul li { margin-left: 2em; }
+
 .post-meta {
     border-bottom: 1px solid #bdbaad;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.6em;
 }
 
 .title {
@@ -78,8 +82,8 @@ body {
     text-decoration: underline;
 }
 
-.date { float: right; }
+.date {
+    float: right;
+    font-size: 0.9em;
+}
 
-.post { margin-bottom: 2.2em; }
-.post p { margin-bottom: 0.8em; }
-.post ul li { margin-left: 2em; }
