@@ -67,17 +67,17 @@ body {
     font-weight: bold;
 }
 
-.title a {
+.post a {
     color: #2790B0;
     text-decoration: none;
 }
 
-.title a:visited {
+.post a:visited {
     color: #2B4E72;
     text-decoration: none;
 }
 
-.title a:hover {
+.post a:hover {
     color: #4E4D4A;
     text-decoration: underline;
 }
