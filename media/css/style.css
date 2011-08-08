@@ -51,8 +51,12 @@ body {
 .cc { font-weight: bold; }
 
 /* formatting */
-.title {
+.post-meta {
     border-bottom: 1px solid #bdbaad;
+    margin-bottom: 0.5em;
+}
+
+.title {
     padding-bottom: 0.3em;
     margin-bottom: 0.3em;
     font-size: 1.2em;
