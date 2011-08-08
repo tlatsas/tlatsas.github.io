@@ -74,6 +74,8 @@ body {
     text-decoration: underline;
 }
 
+.date { float: right; }
+
 .post { margin-bottom: 2.2em; }
 .post p { margin-bottom: 0.8em; }
 .post ul li { margin-left: 2em; }
