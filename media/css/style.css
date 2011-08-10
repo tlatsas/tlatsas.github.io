@@ -31,6 +31,13 @@ a { text-decoration: none; }
     margin: 1em 0em;
 }
 
+#header h1 {
+    color: #808080;
+    font-weight: bold;
+    font-size: 2em;
+    padding-bottom: 1em;
+}
+
 #content {
     float: left;
     text-align: left;
@@ -42,17 +49,18 @@ a { text-decoration: none; }
 
 #nav {
     text-align: right;
-    padding-top: 80px;
+    /*padding-top: 3em;*/
 }
 
 #nav ul li { list-style: none; }
+
 #nav a {
     font-size: 1.2em;
     color: #2790B0;
     font-weight: bold;
 }
-#nav a:hover { text-decoration: underline; }
 
+#nav a:hover { text-decoration: underline; }
 
 #footer {
     color: #808080;
