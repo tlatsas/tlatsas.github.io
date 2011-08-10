@@ -35,6 +35,11 @@ a { text-decoration: none; }
     color: #808080;
     font-weight: bold;
     font-size: 2em;
+}
+
+#header h3 {
+    color: #808080;
+    font-size: 0.8em;
     padding-bottom: 1em;
 }
 
