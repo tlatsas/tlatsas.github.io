@@ -19,6 +19,8 @@ body {
     background-color: #262626;
 }
 
+a { text-decoration: none; }
+
 #site {
     width: 1000px;
     margin: 10px auto;
@@ -37,6 +39,20 @@ body {
     background-color: #fff;
     padding: 1em;
 }
+
+#nav {
+    text-align: right;
+    padding-top: 80px;
+}
+
+#nav ul li { list-style: none; }
+#nav a {
+    font-size: 1.2em;
+    color: #2790B0;
+    font-weight: bold;
+}
+#nav a:hover { text-decoration: underline; }
+
 
 #footer {
     color: #808080;
