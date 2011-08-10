@@ -3,8 +3,10 @@ layout: master
 ---
 
 <div class="post">
-  <div class="title"><a href={{ page.url }}>{{ page.title}}</a></div>
-  <div class="date">{{ page.date | date: "%B %d, %Y" }}</div>
+  <div class="post-meta">
+    <span class="title"><a href={{ page.url }}>{{ page.title}}</a></span>
+    <span class="date">{{ page.date | date: "%B %d, %Y" }}</span>
+  </div>
   <div>
   {{ content }}
   </div>
