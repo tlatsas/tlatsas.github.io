@@ -118,12 +118,12 @@ a { text-decoration: none; }
     font-size: 0.8em;
 }
 
-.about img {
+.left {
     float: left;
     margin: 0em 1em 1em 0em;
 }
 
-.about h3 {
+.hsection {
     font-weight: bold;
     margin-bottom: 0.4em;
 }
