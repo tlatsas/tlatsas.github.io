@@ -4,11 +4,12 @@
 
 /* code bg and plaintext */
 div.highlight {
-    background-color: #272822;
+    /*background-color: #272822;*/
+    background-color: #191919;
     color: #f8f8f2;
     padding: 0.5em;
     margin: 0.5em 0em;
-    /*border: 1px dashed #d4d4d4;*/
+    border: 1px dashed #808080;
 }
 
 
@@ -17,6 +18,7 @@ body {
     font-family: sans-serif;
     font-size: 0.9em;
     background-color: #262626;
+    color: #e5e5e5;
 }
 
 a { text-decoration: none; }
@@ -48,7 +50,7 @@ a { text-decoration: none; }
     text-align: left;
     width: 750px;
     margin-bottom: 1em;
-    background-color: #fff;
+    /*background-color: #fff;*/
     padding: 1em;
 }
 
@@ -82,7 +84,7 @@ a { text-decoration: none; }
 .cc { font-weight: bold; }
 
 /* post formatting */
-.post { margin-bottom: 2.2em; }
+.post { margin-bottom: 3.2em; }
 .post p { margin-bottom: 0.8em; }
 .post ul li { margin-left: 2em; }
 
