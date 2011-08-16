@@ -1,11 +1,13 @@
---- 
+---
 layout: post
 title: set mysql encoding to utf8
 date: 2009-07-28 12:12:17 +03:00
 ---
-This one troubled me for a long time and it also resulted in a corrupted database at some point, because i changed collation encoding to utf8 but the database encoding was latin..(always make backups and make sure you don't erase them :-P )
+This one troubled me for a long time and it also resulted in a corrupted database at some point, because i changed collation encoding to utf8 but the database encoding was latin. (so always make backups and make sure you don't erase them :P )
 
-Before doing the following make sure you backup any databases as this could possibly corrupt them. If you need to change the encoding of your database data, one possible solution would be to use mysqldump to dump the database with the latin (or whatever) encoding and then use the http://www.gnu.org/software/libiconv/documentation/libiconv/iconv.1.html iconv utility to change that encoding to utf8.Then change mysql encoding to utf8 (as follows) and then import the database with the new encoding. I haven't tested this myself though..so don't blame me!
+Before doing the following make sure you backup any databases as this could possibly corrupt them. If you need to change the encoding of your database data, one possible solution **(not tested)** would be to use mysqldump to dump the database with the latin (or whatever) encoding. Then use the [iconv](http://www.gnu.org/software/libiconv/documentation/libiconv/iconv.1.html) utility to change that encoding to utf8. After that change mysql encoding to utf8 (as follows) and then import the database with the new encoding.
+
+Another solution **(worked for me)** is to let mysql "autodetect" the database encoding when you dump (mysqldump) and later import the databases.
 
 So to set everything to utf8 encoding in mysql add the following lines to the \[mysqld\] section of my.cnf
 

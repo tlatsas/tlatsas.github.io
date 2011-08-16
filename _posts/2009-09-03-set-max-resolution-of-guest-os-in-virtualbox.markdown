@@ -1,4 +1,4 @@
---- 
+---
 layout: post
 title: set max resolution of guest os in virtualbox
 date: 2009-09-03 10:24:39 +03:00

@@ -1,13 +1,13 @@
---- 
+---
 layout: post
 title: weechat howto
 date: 2010-12-07 19:49:52 +02:00
 ---
-http://www.weechat.org/ Weechat (Wee Enhanced Environment for Chat) is a lightweight, extensible, console based irc client. It is written in C and licensed under GNU GPL3.
+<img class="right" alt="weechat" src="http://farm7.static.flickr.com/6125/5959339312_4ef9321ec2_m.jpg" />[Weechat](http://www.weechat.org/ "weechat") (Wee Enhanced Environment for Chat) is a lightweight, extensible, console based irc client. It is written in C and licensed under GNU GPL3.
 
 Launch weechat from console with the weechat-curses command.
 
-One of the most important commands is the <strong>/help</strong> command. So, when in doubt use /help.
+One of the most important commands is the **/help** command. So, when in doubt use /help.
 Also using the command **/set config.section.option** will print the value of **config.section.option** and if you want to set a value to an option you type **/set config.section.option value**
 Anyway, lets start by building our configuration to connect to freenode.
 
@@ -44,11 +44,11 @@ irc.server.freenode.ssl_verify
 irc.server.freenode.username
 {% endhighlight %}
 
-As you can see freenode is already in the configuration by default <em>(irc.server.freenode.addresses  = "chat.freenode.net/6667")</em>. If you need to add another server use e.g.:
+As you can see freenode is already in the configuration by default _(irc.server.freenode.addresses  = "chat.freenode.net/6667")_. If you need to add another server use e.g.:
 {% highlight text %}/server add oftc irc.oftc.net/6667{% endhighlight %}
 
 Now, all we need to do is set the rest of the values for the freenode server.
-To get help for a particular option -including the list of expected values- type e.g. :
+To get help for a particular option -including the list of expected values- type e.g.:
 {% highlight text %}/help irc.server.freenode.autoconnect{% endhighlight %}
 
 So, we want to connect to freenode by default and reconnect automatically in case of connection problems:
@@ -57,7 +57,7 @@ So, we want to connect to freenode by default and reconnect automatically in cas
 /set irc.server.freenode.autoreconnect on
 {% endhighlight %}
 
-Next we need to automatically join some channels, for multiple channels use commas as separators <strong>without</strong> spaces:
+Next we need to automatically join some channels, for multiple channels use commas as separators **without** spaces:
 {% highlight text %}/set irc.server.freenode.autojoin = "#archlinux,#archlinux-offtopic,#archlinux-greece"{% endhighlight %}
 
 After that we need to set our nicknames (also comma separated), username and realname (these are optional):
@@ -70,21 +70,23 @@ After that we need to set our nicknames (also comma separated), username and rea
 Last but not least set the irc command to identify with the freenode server with :
 {% highlight text %}/set irc.server.freenode.command = "/msg NickServ identify <your-password-goes-here>"{% endhighlight %}
 
-Save your configuration with the <strong>/save</strong> command and restart weechat, <strong>/EXIT</strong> exits weechat.
+Save your configuration with the **/save** command and restart weechat, **/EXIT** exits weechat.
 Now you should be connected to freenode!
 
 Time for some keybindings!!
-<strong>F5</strong> / <strong>F6</strong> : Cycle through the buffers
-<strong>PageUp</strong> / <strong>PageDown</strong> : scroll up/down main chat area
-<strong>F11</strong> / <strong>F12</strong> : scroll nickname list up/down
+* __F5__ / __F6__ : Cycle through the buffers
+* __PageUp__ / __PageDown__ : scroll up/down main chat area
+* __F11<__ / __F12__ : scroll nickname list up/down
 
-If you are running terminator and have problems with F11 interpreted as "go to full screen" add this to your <strong>~/.config/terminator/config</strong> :
+If you are running terminator and have problems with F11 interpreted as "go to full screen" add this to your **~/.config/terminator/config** :
 {% highlight text %}
 [keybindings]
   full_screen = Disabled
 {% endhighlight %}
 
 If you have the same problem with xfce Terminal go to <strong>Edit -> Preferences -> Shortcuts</strong> and kill the nasty fullscreen shortcut!
+
+<a href="http://www.flickr.com/photos/tlatsas/5958779741/in/set-72157627118802299/"><img class="left" alt="weechat split screens" src="http://farm7.static.flickr.com/6129/5958779741_0230c56db1_m.jpg" /></a>
 
 Lastly the cool stuff!
 Weechat allows you to split the screen and have multiple channels open at the same time. Use the <strong>/window splitv</strong> to vertically split the screen and <strong>/window splith</strong> to horizontally split the screen. You can also provide a percentage to unevenly split the screen and use <strong>/window merge all</strong> to unify all buffers to default.
@@ -95,10 +97,11 @@ When you are happy with your window layout save it:
 To automatically save window layout on exit use :
 {% highlight text %}/set weechat.look.save_layout_on_exit both{% endhighlight %}
 
-When in split mode use <strong>F7</strong> / <strong>F8</strong> to cycle through the active windows-buffers.
+When in split mode use **F7** / **F8** to cycle through the active windows-buffers.
 
-More resources :
-<a href="http://www.weechat.org/files/doc/stable/weechat_quickstart.en.html">Weechat Quickstart</a>
-<a href="http://www.weechat.org/files/doc/stable/weechat_user.en.html">Weechat User's Guide</a>
-<a href="http://www.wikihow.com/Register-a-User-Name-on-Freenode">How to register a username to freenode</a>
-<a href="http://www.weechat.org/scripts/">Weechat scripts</a>
+More resources:
+* [Weechat Quickstart](http://www.weechat.org/files/doc/stable/weechat_quickstart.en.html)
+* [Weechat User's Guide](http://www.weechat.org/files/doc/stable/weechat_user.en.html)
+* [How to register a username to freenode] (http://www.wikihow.com/Register-a-User-Name-on-Freenode)
+* [Weechat scrips](http://www.weechat.org/scripts/)
+
