@@ -3,7 +3,8 @@ layout: post
 title: weechat howto
 date: 2010-12-07 19:49:52 +02:00
 ---
-<img class="right" alt="weechat" src="http://farm7.static.flickr.com/6125/5959339312_4ef9321ec2_m.jpg" />[Weechat](http://www.weechat.org/ "weechat") (Wee Enhanced Environment for Chat) is a lightweight, extensible, console based irc client. It is written in C and licensed under GNU GPL3.
+<img class="right" alt="weechat" src="http://farm7.static.flickr.com/6125/5959339312_4ef9321ec2_m.jpg" />
+[Weechat](http://www.weechat.org/ "weechat") (Wee Enhanced Environment for Chat) is a lightweight, extensible, console based irc client. It is written in C and licensed under GNU GPL3.
 
 Launch weechat from console with the weechat-curses command.
 
@@ -76,7 +77,7 @@ Now you should be connected to freenode!
 Time for some keybindings!!
 * __F5__ / __F6__ : Cycle through the buffers
 * __PageUp__ / __PageDown__ : scroll up/down main chat area
-* __F11<__ / __F12__ : scroll nickname list up/down
+* __F11__ / __F12__ : scroll nickname list up/down
 
 If you are running terminator and have problems with F11 interpreted as "go to full screen" add this to your **~/.config/terminator/config** :
 {% highlight text %}
