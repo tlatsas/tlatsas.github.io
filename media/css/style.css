@@ -157,3 +157,16 @@ a:hover {
     margin-bottom: 2em;
     font-size: 0.7em;
 }
+
+.paginator ul li {
+    display: inline;
+    list-style: none;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.paginator a:visited { color: #2790b0; }
+.paginator a:hover { color: #5FD7FF !important; }
+
+.prevp { float: left; }
+.nextp { float: right; }
