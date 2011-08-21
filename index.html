@@ -12,15 +12,15 @@ layout: master
         {% if paginator.previous_page %}
             {% if paginator.previous_page > 1 %}
                 <li class="prevp">
-                    <a href="/page{{ pagiantor.previous_page }}">&larr; previous page</a>
+                    <a href="/page{{ pagiantor.previous_page }}">&larr; newer posts</a>
                 </li>
             {% else %}
-                <li class="prevp"><a href="/">&larr; previous page</a></li>
+                <li class="prevp"><a href="/">&larr; newer posts</a></li>
             {% endif %}
         {% endif %}
         {% if paginator.next_page %}
             <li class="nextp">
-                <a href="/page{{ paginator.next_page }}">next page &rarr;</a>
+                <a href="/page{{ paginator.next_page }}">older posts &rarr;</a>
             </li>
         {% endif %}
     </ul>
