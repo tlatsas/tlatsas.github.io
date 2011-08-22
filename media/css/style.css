@@ -99,18 +99,21 @@ a:hover {
 /* footer elements */
 .copy { float: right; }
 .cc { font-weight: bold; }
-.cc a {
+
+#footer a {
     color: #808080 !important;
 }
 
-.cc a:hover {
+#footer a:hover {
     color: #808080 !important;
     text-decoration: underline !important;
 }
 
-.cc a:visited {
+#footer a:visited {
     color: #808080 !important;
 }
+
+
 
 /* post formatting */
 .post { margin-bottom: 3.2em; clear: both; }
@@ -170,3 +173,8 @@ a:hover {
 
 .prevp { float: left; }
 .nextp { float: right; }
+
+.archives ul li { list-style: none; }
+.archives { font-size: 1.2em; }
+
+.fixed-font { font-family: monospace; }
