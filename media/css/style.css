@@ -178,3 +178,5 @@ a:hover {
 .archives { font-size: 1.2em; }
 
 .fixed-font { font-family: monospace; }
+
+.disqus-comments { clear: both; }
