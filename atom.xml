@@ -3,7 +3,7 @@ layout: nil
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>tasos at github</title>
+    <title>{% include site_title %}</title>
     <link href="http://tlatsas.github.com/atom.xml" rel="self"/>
     <link href="http://tlatsas.github.com/"/>
     <updated>{{ site.time | date_to_xmlschema }}</updated>
