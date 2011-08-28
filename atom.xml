@@ -7,7 +7,7 @@ layout: nil
     <link href="http://www.kodama.gr/atom.xml" rel="self"/>
     <link href="http://www.kodama.gr"/>
     <updated>{{ site.time | date_to_xmlschema }}</updated>
-    <id>http://www.kodama.gr</id>
+    <id>"http://www.kodama.gr/"</id>
     <author>
         <name>Tasos Latsas</name>
         <email>tlatsas@users.sf.net</email>
@@ -18,7 +18,7 @@ layout: nil
             <title>{{ post.title }}</title>
             <link href="http://www.kodama.gr{{ post.url }}"/>
             <updated>{{ post.date | date_to_xmlschema }}</updated>
-            <id>{% include site_url %}{{ post.id }}</id>
+            <id>"http://www.kodama.gr{{ post.id }}"</id>
             <content type="html">{{ post.content | xml_escape }}</content>
         </entry>
     {% endfor %}
