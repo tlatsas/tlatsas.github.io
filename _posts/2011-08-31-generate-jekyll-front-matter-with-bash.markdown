@@ -25,8 +25,7 @@ _datetime=$(date +'%Y-%m-%d %H:%M:%S')
 
 **\_date** will be used for the filename and **\_datetime** for the _date_ variable.
 
-
-we also need to replace whitespace with dashes in the post title, for use in the filename.
+We also need to replace whitespace with dashes in the post title, for use in the filename.
 
 {% highlight bash %}
 _post=$(echo $1 | tr ' ' '-')
