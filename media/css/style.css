@@ -8,7 +8,7 @@ div.highlight {
     background-color: #191919;
     color: #f8f8f2;
     padding: 0.5em;
-    margin: 0.5em 0em;
+    margin: 0.5em 0em 1em 0em;
     border: 1px dashed #808080;
     clear: both;
 }
@@ -117,7 +117,7 @@ a:hover {
 
 /* post formatting */
 .post { margin-bottom: 3.2em; clear: both; }
-.post p { margin-bottom: 0.8em; }
+.post p { margin-bottom: 1em; }
 .post ul, .post ol { margin-bottom: 1em; }
 .post ul li, .post ol li { margin-left: 2em; }
 
