@@ -100,16 +100,16 @@ a:hover {
 .copy { float: right; }
 .cc { font-weight: bold; }
 
-#footer a {
+#footer a, #header a {
     color: #808080 !important;
 }
 
-#footer a:hover {
+#footer a:hover, #header a:hover {
     color: #808080 !important;
     text-decoration: underline !important;
 }
 
-#footer a:visited {
+#footer a:visited, #header a {
     color: #808080 !important;
 }
 
