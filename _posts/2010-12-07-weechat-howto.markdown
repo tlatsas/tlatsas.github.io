@@ -96,7 +96,7 @@ When you are happy with your window layout save it:
 {% highlight text %}/layout save{% endhighlight %}
 
 To automatically save window layout on exit use :
-{% highlight text %}/set weechat.look.save_layout_on_exit both{% endhighlight %}
+{% highlight text %}/set weechat.look.save_layout_on_exit all{% endhighlight %}
 
 When in split mode use **F7** / **F8** to cycle through the active windows-buffers.
 
