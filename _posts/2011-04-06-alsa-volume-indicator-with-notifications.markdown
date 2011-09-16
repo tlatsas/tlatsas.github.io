@@ -13,4 +13,4 @@ I took this script and polished it a bit. It now features:
 * proper help screen
 * proper stock icon names based on the [freedesktop icon naming specification](http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html)
 
-You can get the script from here: [amixer-osd.sh](https://github.com/tlatsas/utils-scripts/blob/master/amixer-osd.sh).
+You can get the script from here: [alsavol](https://github.com/tlatsas/utils-scripts/blob/master/alsavol).

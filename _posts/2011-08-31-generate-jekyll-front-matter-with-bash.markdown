@@ -72,4 +72,4 @@ EOF
 Make sure to avoid quoting of the **EOF** as bash variable subsitution won't work.
 Also, note that I used the >| notation because I have the bash [noclobber](http://www.cyberciti.biz/tips/howto-keep-file-safe-from-overwriting.html) variable set.
 
-The [jekyll-post.sh script](https://github.com/tlatsas/utils-scripts/blob/master/jekyll-post.sh) is on github, also added some code to prompt user for launching a text editor.
+The [jekyll-post script](https://github.com/tlatsas/utils-scripts/blob/master/jekyll-post) is on github, also added some code to prompt user for launching a text editor.
