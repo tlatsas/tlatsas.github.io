@@ -131,6 +131,10 @@ a:hover {
     margin-bottom: 0.6em;
 }
 
+.post-body {
+    padding: 0 1.2em;
+}
+
 .title {
     padding-bottom: 0.3em;
     margin-bottom: 0.3em;
