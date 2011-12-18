@@ -127,7 +127,7 @@ a:hover {
 .post ul li, .post ol li { margin-left: 2em; }
 
 .post-meta {
-    border-bottom: 1px solid #bdbaad;
+    border-bottom: 1px solid #808080;
     margin-bottom: 0.6em;
 }
 
@@ -138,7 +138,7 @@ a:hover {
 .title {
     padding-bottom: 0.3em;
     margin-bottom: 0.3em;
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: bold;
 }
 
@@ -147,6 +147,7 @@ a:hover {
 .date {
     float: right;
     font-size: 0.8em;
+    color: #808080;
 }
 
 .left {
