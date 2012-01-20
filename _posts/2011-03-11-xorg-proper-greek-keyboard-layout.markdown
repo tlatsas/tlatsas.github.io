@@ -22,8 +22,8 @@ Section "InputClass"
   MatchIsKeyboard  "yes"
   Option           "XkbLayout" "us, gr"
   Option           "XkbVariant" ",extended"
-  Option           "XkbOptions" "grp:alt_shift_toggle, terminate:ctrl_alt_bksp, lv3:ralt_switch_multikey,
-eurosign:e"
+  Option           "XkbOptions" "grp:alt_shift_toggle, terminate:ctrl_alt_bksp,
+lv3:ralt_switch_multikey, eurosign:e"
 EndSection
 {% endhighlight %}
 
