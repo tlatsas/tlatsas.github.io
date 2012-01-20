@@ -134,6 +134,14 @@ a:hover {
     margin-bottom: 0.6em;
 }
 
+.post-footer {
+    border-top: 1px solid #808080;
+    padding-top: 0.2em;
+    color: #808080 !important;
+    font-size: 0.8em;
+    clear: both;
+}
+
 .title {
     padding-bottom: 0.3em;
     margin-bottom: 0.3em;

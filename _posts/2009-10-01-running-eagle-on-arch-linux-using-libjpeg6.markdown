@@ -2,6 +2,7 @@
 layout: post
 title: running eagle on arch linux using libjpeg6
 date: 2009-10-01 13:58:30 +03:00
+tags: [ archlinux, eagle ]
 ---
 Eagle 5.6 depends on libjpeg6 to run. I case you have upgraded to libjpeg7 there are a few tricks to help you run eagle.
 

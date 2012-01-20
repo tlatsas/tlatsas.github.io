@@ -2,6 +2,7 @@
 layout: post
 title: generate jekyll front-matter with bash
 date: 2011-08-31 20:35:11
+tags: [ jekyll, bash ]
 ---
 Creating a post in a jekyll-powered blog is pretty straightforward. Just create a file in markdown format and put your post in.
 Every post has a special [YAML Front Matter](https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter) block with some variables.
