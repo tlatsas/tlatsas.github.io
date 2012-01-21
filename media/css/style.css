@@ -96,28 +96,39 @@ a:hover {
 #footer {
     color: #808080;
     clear: both;
-    border-top: solid 1px;
-    padding: 0.5em 0.5em 1em 0.5em;
+    width: 620px;
+    border-top: double;
+    /*padding: 0.5em 0em 1em 0em;*/
     font-size: 0.9em;
-    /*margin: 0em 4em;*/
+    padding: 1em 0em 5em 0em;
 }
 
 /* footer elements */
-.copy { float: right; }
+.copy {
+    float: right;
+    text-align: right;
+}
+
 .cc { font-weight: bold; }
 
-#footer a, #header a {
+.cc a {
     color: #808080 !important;
 }
 
-#footer a:hover, #header a:hover {
+#header a {
+    color: #808080 !important;
+}
+
+#header a:hover {
     color: #808080 !important;
     text-decoration: underline !important;
 }
 
-#footer a:visited, #header a {
+#header a {
     color: #808080 !important;
 }
+
+.footer-left { float: left; }
 
 /* post formatting */
 .post {
