@@ -1,27 +1,13 @@
 ---
-title: myblog
+title: archives
 layout: master
 ---
-<div class="post-list">
-    {% for post in paginator.posts %}
-        {% include post.html %}
-    {% endfor %}
-</div>
-<div class="paginator">
+<h3 class="hsection">archives</h3>
+<div class="archives">
     <ul>
-        {% if paginator.previous_page %}
-            {% if paginator.previous_page > 1 %}
-                <li class="prevp">
-                    <a href="/page{{ pagiantor.previous_page }}">&larr; newer posts</a>
-                </li>
-            {% else %}
-                <li class="prevp"><a href="/">&larr; newer posts</a></li>
-            {% endif %}
-        {% endif %}
-        {% if paginator.next_page %}
-            <li class="nextp">
-                <a href="/page{{ paginator.next_page }}">older posts &rarr;</a>
-            </li>
-        {% endif %}
+        {% for post in site.posts %}
+        <li><span class="fixed-font">{{ post.date | date: "%d %b, %Y" }} | </span><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
     </ul>
 </div>
+
