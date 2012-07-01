@@ -206,3 +206,11 @@ a:hover {
 .fixed-font { font-family: monospace; }
 
 .disqus-comments { clear: both; }
+
+#about-site, #contact {
+    padding-left: 8em;
+}
+
+#about-site {
+    padding-top: 2em;
+}
