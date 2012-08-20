@@ -5,3 +5,5 @@ server_port: 4000
 pygments: true
 markdown: kramdown
 exclude: [vendor]
+title: kodama.gr
+subtitle: follow the white kodama
