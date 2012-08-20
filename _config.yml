@@ -1,7 +1,7 @@
 auto: true
 server: true
+base_url: /
 server_port: 4000
 pygments: true
-paginate: 10
 markdown: kramdown
 exclude: [vendor]
