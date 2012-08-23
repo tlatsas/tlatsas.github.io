@@ -3,7 +3,9 @@ server: true
 base_url: /
 server_port: 4000
 pygments: true
+permalink: pretty
 markdown: kramdown
 exclude: [vendor]
 title: kodama.gr
 subtitle: follow the white kodama
+url: http://kodama.gr
