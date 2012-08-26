@@ -30,7 +30,6 @@ table {
  * https://github.com/uraimo/pygments-vimstyles/blob/2a99e97f6383d1b978917ff42f9ecdd6b2f021c0/railscasts.css 
  */
 
-.highlight { background: #2B2B2B; color: #E6E1DC}
 .highlight .hll { background-color: #ffffcc }
 .highlight .c { color: #BC9458; font-style: italic} /* Comment */
 .highlight .err { color: #E6E1DC} /* Error */
@@ -128,7 +127,14 @@ body {
 }
 
 pre {
-    padding: 0.6em; margin: 0.5em 0;
+    padding: 0.6em;
+    margin: 0.5em 0;
+    border: 1px solid #2B2B2B;
+    border-radius: 0.2em 0.2em 0.2em 0.2em;
+    overflow: auto;
+    /* defaults bg/fg highlighting */
+    background: #2B2B2B;
+    color: #E6E1DC;
 }
 
 pre, code {
