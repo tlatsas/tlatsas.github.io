@@ -101,6 +101,21 @@ table {
 .highlight .vi { color: #D0D0FF} /* Name.Variable.Instance */
 .highlight .il { color: #A5C261} /* Literal.Number.Integer.Long */
 
+/* fonts */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(../fonts/opensans.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata'), url(../fonts/inconsolata.woff) format('woff');
+}
+
 
 /* global styles */
 a, a:hover {
@@ -109,16 +124,15 @@ a, a:hover {
 
 body {
     background: url("../img/bg.png") repeat scroll 0 0 transparent;
-    font: 14px/1.7 "DejaVu Sans","Bitstream Vera Sans","Lucida Grande",Verdana,Helvetica,Arial,sans-serif;
-    font-weight: 300;
+    font: 14px "Open Sans", sans-serif;
 }
 
 pre {
     padding: 0.6em; margin: 0.5em 0;
 }
 
-code {
-    font-size: 14px;
+pre, code {
+    font: 15px "Inconsolata",monospace;
 }
 
 
