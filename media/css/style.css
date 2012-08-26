@@ -166,6 +166,7 @@ pre, code {
 
 #nav ul li {
     padding-right: 1em;
+    font-family: "Courier New", monospace;
     font-weight: bold;
     font-size: 16px;
 }
