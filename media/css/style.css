@@ -117,6 +117,14 @@ table {
 
 
 /* global styles */
+a {
+    color: #427995;
+}
+
+a:hover {
+    color: #00BEF3;
+}
+
 a, a:hover {
     text-decoration: none;
 }
