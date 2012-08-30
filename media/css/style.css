@@ -141,6 +141,12 @@ pre, code {
     font: 15px "Inconsolata",monospace;
 }
 
+footer {
+    border-top: 2px solid #84a90e;
+    padding: 0.2em 0 0.5em 0;
+    font-size: 0.9em;
+    color: #444;
+}
 
 /* specific block styles used in layouts */
 .container {
@@ -194,11 +200,6 @@ pre, code {
     clear: both;
 }
 
-footer {
-    border-top: 2px solid #84a90e;
-    padding: 0.2em 0;
-}
-
 .post-header {
     text-align: center;
     border-bottom: 1px solid #84A90E;
@@ -246,4 +247,8 @@ img.left {
 
 img.right {
     padding-left: 0.5em;
+}
+
+.clear {
+    clear: both;
 }

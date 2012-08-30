@@ -7,39 +7,34 @@
 </head>
 <body>
     <div class="container">
+        <header>
+            <div id="header">
+                <!-- <h1><a href="/">{{ site.title }}</a></h1> -->
+                <img src="/media/img/greatwave.jpg" />
+            </div>
 
-        <!-- site header -->
-        <div id="header">
-            <!-- <h1><a href="/">{{ site.title }}</a></h1> -->
-            <img src="/media/img/greatwave.jpg" />
-        </div>
-
-        <!-- navigation -->
-        <div id="nav">
-            <ul class="unstyled inline">
-                <li><a href="/">~</a></li>
-                <li><a href="/projects">#!</a></li>
-                <li><a href="/about">?</a></li>
-            </ul>
-        </div>
+            <div id="nav">
+                <ul class="unstyled inline">
+                    <li><a href="/">~</a></li>
+                    <li><a href="/projects">#!</a></li>
+                    <li><a href="/about">?</a></li>
+                </ul>
+            </div>
+        </header>
 
         <div class="content">
             {{ content }}
         </div>
 
         <footer>
-            <div class="">
-                <p><a href="https://github.com">github</a>
-                : <a href="http://jekyllrb.com/">jekyll</a>
-                : <a href=https://github.com/tlatsas/tlatsas.github.com>source</a>
-                </p>
-            </div>
-            <div class="">
+            <div class="right">
                 <p>Tasos Latsas, &copy; 2009-2012</p>
-                <p class="">
+                <p>
                 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CreativeCommons By-NC-SA</a>
                 </p>
             </div>
+            <div>Powered by <a href="http://jekyllrb.com/">jekyll</a>.</div>
+            <div class="clear"></div>
         </footer>
 
     </div>
