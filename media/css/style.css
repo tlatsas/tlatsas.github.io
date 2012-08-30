@@ -141,6 +141,10 @@ pre, code {
     font: 15px "Inconsolata",monospace;
 }
 
+header {
+    padding-top: 0.5em;
+}
+
 footer {
     border-top: 2px solid #84a90e;
     padding: 0.2em 0 0.5em 0;
@@ -157,13 +161,19 @@ footer {
     box-shadow: 0 2px 5px 2px #999;
 }
 
-#header {
-    padding-top: 0.5em;
+.himage {
+    position: relative;
 }
 
-#header img {
+.himage img {
     width: 40em;
-    border: none !important;
+}
+
+.htext {
+    position: absolute;
+    top: 0.4em;
+    right: 1em;
+    font-size: 1.4em;
 }
 
 #nav {
@@ -251,4 +261,8 @@ img.right {
 
 .clear {
     clear: both;
+}
+
+.mono {
+    font-family: "Courier New", monospace;
 }
