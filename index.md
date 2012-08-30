@@ -11,5 +11,5 @@ blog posts
 
 {% for post in site.posts %}
 * <span class="date light">{{ post.date | date: "%d %b, %Y" }}</span> &raquo; [{{ post.title }}]({{ post.url }})
-{% endfor %}{:.unstyled .items}
-
+{:.unstyled .items}
+{% endfor %}

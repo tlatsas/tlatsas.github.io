@@ -1,5 +1,0 @@
----
-title: thesis
-layout: master
----
-

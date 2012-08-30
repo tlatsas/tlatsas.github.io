@@ -157,6 +157,7 @@ footer {
     border-top: 2px solid #84a90e;
     padding: 0.2em 0 0.5em 0;
     font-size: 0.9em;
+    margin-top: 0.4em;
 }
 
 /* specific block styles used in layouts */
@@ -199,13 +200,14 @@ footer {
     text-align: justify;
 }
 
+.content p {
+    padding: 0.5em 0;
+}
+
 .content h2 {
     border-bottom: 1px solid #84a90e;
     padding: 0.2em 0;
-}
-
-.items {
-    margin: 1em 0;
+    margin-bottom: 0.4em;
 }
 
 .date {
@@ -227,10 +229,6 @@ footer {
     display: block;
     padding: 0.2em 0;
     font-size: 0.6em !important;
-}
-
-.post-content p {
-    padding: 0.5em 0;
 }
 
 .post-content img {
