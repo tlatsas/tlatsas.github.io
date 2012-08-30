@@ -1,12 +1,12 @@
 ---
 layout: master
 ---
-<div class="">
-  <div class="">
-    <span class=""><a href={{ page.url }}>{{ page.title}}</a></span>
-    <span class="">{{ page.date | date: "%B %d, %Y" }}</span>
+<div class="post">
+  <div class="post-header">
+    <span class="post-title"><a href={{ page.url }}>{{ page.title}}</a></span>
+    <span class="post-date date">{{ page.date | date: "%B %d, %Y" }}</span>
   </div>
-  <div>
+  <div class="post-content">
   {{ content }}
   </div>
 </div>

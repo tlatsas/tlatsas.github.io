@@ -142,13 +142,13 @@ pre, code {
 }
 
 
-/* specific block styles */
+/* specific block styles used in layouts */
 .container {
     margin: 0.5em auto 2em auto;
     width: 40em; padding: 0.1em 2em;
     background-color: #fff;
     border-radius: 5px 5px 5px 5px;
-    box-shadow: 0 2px 5px 2px #444444;
+    box-shadow: 0 2px 5px 2px #999;
 }
 
 #header {
@@ -157,6 +157,7 @@ pre, code {
 
 #header img {
     width: 40em;
+    border: none !important;
 }
 
 #nav {
@@ -184,7 +185,7 @@ pre, code {
     margin: 1em 0;
 }
 
-.items .date {
+.date {
     font-family: "Courier New", monospace;
     font-size: 0.9em;
 }
@@ -192,6 +193,21 @@ pre, code {
 footer {
     border-top: 2px solid #84a90e;
     padding: 0.2em 0;
+}
+
+.post-header {
+    text-align: center;
+    border-bottom: 1px solid #84A90E;
+    padding: 0.2em 0;
+}
+
+.post-date {
+    display: block;
+    padding: 0.2em 0;
+}
+
+.post-content p {
+    padding: 0.5em 0;
 }
 
 
@@ -208,6 +224,14 @@ footer {
     float: left;
 }
 
+.left img {
+    padding-right: 0.2em;
+}
+
 .right {
     float: right;
+}
+
+.right img {
+    padding-left: 0.2em;
 }
