@@ -4,8 +4,8 @@ title: weechat howto
 date: 2010-12-07 19:49:52 +02:00
 tags: weechat
 ---
-<img class="right" alt="weechat" src="http://farm7.static.flickr.com/6125/5959339312_4ef9321ec2_m.jpg" />
-[Weechat](http://www.weechat.org/ "weechat") (Wee Enhanced Environment for Chat) is a lightweight, extensible, console based irc client. It is written in C and licensed under GNU GPL3.
+![weechat-front](http://farm7.static.flickr.com/6125/5959339312_4ef9321ec2_m.jpg){:.right}
+[Weechat](http://www.weechat.org/ "weechat") (We Enhanced Environment for Chat) is a lightweight, extensible, console based irc client. It is written in C and licensed under GNU GPL3.
 
 Launch weechat from console with the weechat-curses command.
 
@@ -88,8 +88,7 @@ If you are running terminator and have problems with F11 interpreted as "go to f
 
 If you have the same problem with xfce Terminal go to <strong>Edit -> Preferences -> Shortcuts</strong> and kill the nasty fullscreen shortcut!
 
-<a href="http://www.flickr.com/photos/tlatsas/5958779741/in/set-72157627118802299/"><img class="left" alt="weechat split screens" src="http://farm7.static.flickr.com/6129/5958779741_0230c56db1_m.jpg" /></a>
-
+![weechat-rooms](http://farm7.static.flickr.com/6129/5958779741_0230c56db1_m.jpg){:.right}
 Lastly the cool stuff!
 Weechat allows you to split the screen and have multiple channels open at the same time. Use the <strong>/window splitv</strong> to vertically split the screen and <strong>/window splith</strong> to horizontally split the screen. You can also provide a percentage to unevenly split the screen and use <strong>/window merge all</strong> to unify all buffers to default.
 When you are happy with your window layout save it:
