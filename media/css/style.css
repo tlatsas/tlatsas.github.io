@@ -149,6 +149,15 @@ pre, code {
     font: 15px "Inconsolata",monospace;
 }
 
+p code {
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    overflow: auto;
+    padding: 0.1em 0.5em;
+    margin-right: 0.2em;
+}
+
 header {
     padding-top: 0.5em;
 }
