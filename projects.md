@@ -9,11 +9,11 @@ projects
 ### [xcolors][xcolors]
 Source code for [xcolors.net][xcolors-net]. A flask-powered color theme directory for
 Xresources-aware terminals. Contains a parser that generates the theme templates when the flask
-starts, much like a static web generator, but instead of html it generates jinja2 templates.
+starts, much like a static page generator, but instead of html it generates jinja2 templates.
 
 ### [omup][omup]
 Command line ompldr.org uploader written in Python.
-Does not depend on cURL or any other external modules.
+Does not depend on cURL or other external modules.
 
 ### [line-coding][lc]
 A set of functions that emulate popular line coding techniques line NRZ and Manchester. Run on
@@ -48,7 +48,7 @@ Configuration files from `~`. I like the simplicity of window managers over full
 all configuration files in one place is handy.
 
 ### [utilities][util]
-Various handy little scripts.
+Various useful little scripts.
 
 
 [xcolors]: https://github.com/tlatsas/xcolors
