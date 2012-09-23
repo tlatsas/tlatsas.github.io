@@ -169,6 +169,11 @@ footer {
     margin-top: 0.4em;
 }
 
+h3 {
+    margin-top: 1em;
+    font-size: 1.1em;
+}
+
 /* specific block styles used in layouts */
 .container {
     margin: 0.5em auto 2em auto;
