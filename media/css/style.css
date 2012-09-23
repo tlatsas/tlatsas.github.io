@@ -233,6 +233,14 @@ h3 {
     clear: both;
 }
 
+.social {
+    padding-top: 0.3em;
+}
+
+.cc {
+    font-size: 0.9em;
+}
+
 .post-header {
     text-align: center;
     border-bottom: 1px solid #84A90E;
