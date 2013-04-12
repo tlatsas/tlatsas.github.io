@@ -101,8 +101,8 @@ To automatically save window layout on exit use :
 When in split mode use **F7** / **F8** to cycle through the active windows-buffers.
 
 More resources:
+
 * [Weechat Quickstart](http://www.weechat.org/files/doc/stable/weechat_quickstart.en.html)
 * [Weechat User's Guide](http://www.weechat.org/files/doc/stable/weechat_user.en.html)
-* [How to register a username to freenode] (http://www.wikihow.com/Register-a-User-Name-on-Freenode)
+* [How to register a username to freenode](http://www.wikihow.com/Register-a-User-Name-on-Freenode)
 * [Weechat scrips](http://www.weechat.org/scripts/)
-
