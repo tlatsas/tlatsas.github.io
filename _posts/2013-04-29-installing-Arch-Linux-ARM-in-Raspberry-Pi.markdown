@@ -144,11 +144,16 @@ Answer "yes" on prompt to overwrite. To run a full system upgrade run:
 Depending on the usage you are planning to do with the rpi it might be a good idea to adjust the RAM
 split between the CPU and the GPU. Edit the file `/boot/config.txt` file and change the value of the
 variable `gpu_mem_256` or `gpu_mem_521` depending on the rpi model you have.
-[This post](http://raspberrypi.stackexchange.com/a/1675) shows the valid memory values.
+[This post](http://raspberrypi.stackexchange.com/a/1675) shows the valid memory values. Note that you
+must also take into consideration the `cma_lwm` and `cma_hwm` variables. These variables allow dynamic
+memory management at runtime. Make sure that `gpu_mem_256` (or 512) value is higher than the high water mark
+`cma_hwm`. More info at the links on the bottom of this post.
 
 ### Sources and further reading
 
 * [memory allocation](http://raspberrypi.stackexchange.com/a/1675)
 * [resize physical parition](http://litwol.com/content/fdisk-resizegrow-physical-partition-without-losing-data-linodecom)
+* [dynamic memory split](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&t=19334&p=218282&hilit=cma#p217665)
+* [rpi memory configuration](http://elinux.org/RPi_config.txt#Memory)
 * [Arch Linux ARM for RPI](http://archlinuxarm.org/platforms/armv6/raspberry-pi)
 * [Arch Linux post-installation notes](https://wiki.archlinux.org/index.php/Beginners%27_Guide#Post-installation)
