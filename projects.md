@@ -3,8 +3,8 @@ title: projects
 layout: master
 ---
 
-projects
---------
+personal projects
+-----------------
 
 ### [xcolors][xcolors]
 Source code for [xcolors.net][xcolors-net]. A flask-powered color theme directory for
@@ -47,8 +47,18 @@ Pkgbuilds for packages I maintain in [AUR][aur].
 Configuration files from `~`. I like the simplicity of window managers over full DEs, so having
 all configuration files in one place is handy.
 
+{:.del}
 ### [utilities][util]
-Various useful little scripts.
+Various useful little scripts. Now merged in [dotfiles][dot].
+
+master thesis
+-------------
+
+"Incident Identification Platform Based on Mobile Devices"
+
+The incident locator platform aims to detect incidents (such as forest fires) by utilizing reports sent from mobile clients. We assume that the clients know only the approximate location of such incidents. Each client sents its coordinates in terms of longitude and latitude and the general direction where the device is pointing at. The platform tries to combine multiple reports in order to accurately determine the incident's location on the map. This is a pilot implementation and currently only the Android platform is supported. The server and the client code is freely available under the 3-clause BSD license. 
+
+All sources are under the [incident locator organization][ilocp] on github.
 
 
 [xcolors]: https://github.com/tlatsas/xcolors
@@ -66,3 +76,4 @@ Various useful little scripts.
 [dot]: https://github.com/tlatsas/dotfiles
 [util]: https://github.com/tlatsas/utils-scripts
 [aur]: https://aur.archlinux.org/packages.php?SeB=m&K=tasidus
+[ilocp]: https://github.com/ilocp

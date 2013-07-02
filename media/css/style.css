@@ -298,3 +298,7 @@ img.right {
 .light {
     color: #444; /* lighter color for some text */
 }
+
+.del {
+    text-decoration: line-through;
+}
