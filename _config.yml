@@ -1,7 +1,5 @@
-auto: true
-server: true
 base_url: /
-server_port: 4000
+port: 4000
 pygments: true
 permalink: pretty
 markdown: kramdown
