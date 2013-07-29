@@ -1,4 +1,4 @@
-base_url: /
+baseurl: /
 port: 4000
 pygments: true
 permalink: pretty
