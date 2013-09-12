@@ -2,6 +2,7 @@
 layout: post
 title: adjusting HDD spindown with systemd service files
 date: 2012-09-28 15:18:28
+tags: systemd
 ---
 
 The preferred way to run on-shot commands after boot when using Archlinux + initscripts,

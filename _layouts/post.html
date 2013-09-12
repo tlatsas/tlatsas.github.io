@@ -9,6 +9,9 @@ layout: master
   <div class="post-content">
   {{ content }}
   </div>
+  <div class="post-tags">
+      <i class="icon-tag"></i><span class="tag-list">{{ page.tags | array_to_sentence_string }}</span>
+  </div>
 </div>
 
 <div class="disqus">

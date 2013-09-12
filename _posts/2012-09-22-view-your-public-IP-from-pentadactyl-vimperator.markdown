@@ -2,6 +2,7 @@
 layout: post
 title: view your public IP from pentadactyl/vimperator
 date: 2012-09-22 09:41:07
+tags: pentadactyl vimperator firefox
 ---
 [Pentadactyl](http://5digits.org/pentadactyl/) and [vimperator](http://www.vimperator.org/vimperator)
 extensions allow you to write handy functions in javascript. These
