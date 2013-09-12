@@ -242,6 +242,11 @@ h3 {
     font-size: 0.9em;
 }
 
+.post {
+    padding-bottom: 1em;
+    border-bottom: 2px solid rgba(0, 49, 79, 0.08);
+}
+
 .post-header {
     text-align: center;
     border-bottom: 1px solid #84A90E;
@@ -256,6 +261,9 @@ h3 {
 
 .post-content img {
     padding-top: 0.5em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .post-content ul {
@@ -302,3 +310,4 @@ img.right {
 .del {
     text-decoration: line-through;
 }
+
