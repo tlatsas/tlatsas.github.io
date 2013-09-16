@@ -7,3 +7,4 @@ exclude: [vendor]
 title: kodama.gr
 subtitle: follow the white kodama
 url: http://kodama.gr
+timezone: Europe/Athens
