@@ -3,6 +3,7 @@ layout: post
 title: weechat howto
 date: 2010-12-07 19:49:52 +02:00
 tags: weechat
+comments: true
 ---
 ![weechat-front](http://farm7.static.flickr.com/6125/5959339312_4ef9321ec2_m.jpg){:.right}
 [Weechat](http://www.weechat.org/ "weechat") (We Enhanced Environment for Chat) is a lightweight, extensible, console based irc client. It is written in C and licensed under GNU GPL3.

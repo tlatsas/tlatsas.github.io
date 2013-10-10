@@ -3,6 +3,7 @@ layout: post
 title: preview sphinx documentation
 date: 2013-07-23 08:28:59
 tags: python sphinx documentation release
+comments: true
 ---
 
 I recently released a very small utility called [sphinx-serve][1] which

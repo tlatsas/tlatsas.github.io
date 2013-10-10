@@ -3,6 +3,7 @@ layout: post
 title: Enable Ctrl-Alt-Backspace in Xorg
 date: 2010-09-14 12:11:25 +03:00
 tags: Xorg
+comments: true
 ---
 Add
 {% highlight text %}

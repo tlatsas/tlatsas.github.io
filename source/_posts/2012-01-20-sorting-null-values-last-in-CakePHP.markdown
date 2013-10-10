@@ -3,6 +3,7 @@ layout: post
 title: sorting null values last in CakePHP
 date: 2012-01-20 18:33:42
 tags: [ php , cakephp ]
+comments: true
 ---
 Assume your data contain a field with some NULL and some not NULL values.
 If you want to sort your entries against that field in a descending order, NULL

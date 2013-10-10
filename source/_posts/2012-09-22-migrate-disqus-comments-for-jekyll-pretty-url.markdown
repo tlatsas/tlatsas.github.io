@@ -3,6 +3,7 @@ layout: post
 title: migrate disqus comments for jekyll's pretty urls
 date: 2012-09-22 20:16:05
 tags: disqus jekyll
+comments: true
 ---
 I recently enabled the pretty-url feature in Jekyll, which removes the redundant `.html` suffix in
 URLs. You can enable it by adding `permalink: pretty` in your `_config.yml`. This of course
