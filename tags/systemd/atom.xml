@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: systemd | > kodama.gr_]]></title>
+  <link href="http://www.kodama.gr/tags/systemd/atom.xml" rel="self"/>
+  <link href="http://www.kodama.gr/"/>
+  <updated>2013-10-13T14:34:25+03:00</updated>
+  <id>http://www.kodama.gr/</id>
+  <author>
+    <name><![CDATA[Tasos Latsas]]></name>
+    <email><![CDATA[tlatsas@gmx.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[adjusting HDD spindown with systemd service files]]></title>
+    <link href="http://www.kodama.gr/2012/09/28/adjusting-HDD-spindown-with-systemd-service-files/"/>
+    <updated>2012-09-28T18:18:28+03:00</updated>
+    <id>http://www.kodama.gr/2012/09/28/adjusting-HDD-spindown-with-systemd-service-files</id>
+    <content type="html"><![CDATA[<p>The preferred way to run on-shot commands after boot when using Archlinux + initscripts,
+is placing them in the <code>rc.local</code> file. Also, initscripts provide a handy helper which creates a
+service file that runs these commands on boot when using systemd. If you want to completely
+move away from initscripts, to a pure systemd-based system, you need to create service
+file(s) for these commands.</p>
+
+<p>The following is an example service file that adjust the HDD spindown levels.</p>
+
+<p><div class="highlight"><pre><code class="ini"><span class="err">&lt;/p&gt;</span>
+
+<span class="err">&lt;p&gt;</span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Fix excessive HDD parking frequency&lt;/p&gt;</span>
+
+<span class="err">&lt;p&gt;</span><span class="k">[Service]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">oneshot</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/sbin/hdparm -B 220 /dev/sda</span>
+<span class="na">RemainAfterExit</span><span class="o">=</span><span class="s">yes&lt;/p&gt;</span>
+
+<span class="err">&lt;p&gt;</span><span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target&lt;/p&gt;</span>
+
+<span class="err">&lt;p&gt;</span>
+</code></pre></div></p>
+
+<p>The most notable options here are the <code>oneshot</code> service type and the <code>RemainAfterExit</code> option.
+The <code>oneshot</code> service type is used to indicate that the command should exit before starting any
+follow-up units. We also set the <code>RemainAfterExit</code> option to <code>true</code> to indicate that this service
+should be considered active after it exits. Finally, keep in mind that you need the full command
+path in <code>ExecStart</code>.</p>
+]]></content>
+  </entry>
+  
+</feed>

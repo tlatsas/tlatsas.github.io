@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: archlinux | > kodama.gr_]]></title>
+  <link href="http://www.kodama.gr/tags/archlinux/atom.xml" rel="self"/>
+  <link href="http://www.kodama.gr/"/>
+  <updated>2013-10-13T14:34:25+03:00</updated>
+  <id>http://www.kodama.gr/</id>
+  <author>
+    <name><![CDATA[Tasos Latsas]]></name>
+    <email><![CDATA[tlatsas@gmx.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[installing Arch Linux ARM in Raspberry Pi]]></title>
+    <link href="http://www.kodama.gr/2013/04/29/installing-Arch-Linux-ARM-in-Raspberry-Pi/"/>
+    <updated>2013-04-29T16:44:38+03:00</updated>
+    <id>http://www.kodama.gr/2013/04/29/installing-Arch-Linux-ARM-in-Raspberry-Pi</id>
+    <content type="html"><![CDATA[<p>This tutorial guides you through the process of installing the ARM flavour of
+Arch Linux in a RaspberryPi. This is a headless installation procedure,
+no monitor/tv or keyboard are required.</p>
+
+<h3 id="get-arch-linux-arm">Get Arch Linux ARM</h3>
+
+<p>You can download the image using a direct download link or torrent. The latest version
+available (at this time) is the <code>archlinux-hf-2013-02-11</code>. After downloading the zip archive containing the
+image verify the SHA-1 checksum. First download the <code>archlinux-hf-2013-02-11.zip.sha1</code> file
+in the same path as the zip archive and then run:</p>
+
+<p><div class="highlight"><pre><code class="text">$ sha1sum -c archlinux-hf-2012-09-18.img.sha1
+</code></pre></div></p>
+
+<h3 id="install-on-sd-card">Install on SD card</h3>
+
+<p>The installation process is pretty straighforward. Insert the SD card in your computer
+and transfer the image to the card using the <code>dd</code> command as root. As always, pay attention
+to the supplied destination device. Make sure you use the one corresponding to the SD card
+or you could trash all your data on other devices. Also make sure that the destination device
+is not mounted. You can use the <code>lsblk</code> command to verity that. We will just use <code>sdX</code> as an example.</p>
+
+<p><div class="highlight"><pre><code class="text"># dd bs=1M if=archlinux-hf-2013-02-11.img of=/dev/sdX
+</code></pre></div></p>
+
+<h3 id="expanding-the-root-partition">Expanding the root partition</h3>
+
+<p>After the image transfer is complete two partitions are created. The <code>sdX1</code> partition will be mounted
+at <code>/boot</code> and the filesystem is <code>VFAT</code>. The other partition, <code>sdX2</code> holds the root filesystem and is
+formatted as <code>ext4</code>.</p>
+
+<p>The root filesystem is a little smaller than 2GB. If the SD card is bigger (it should be) we need to expand
+this partition to fill the remaining space. Alternatively we could create a second filesystem and mounted at
+a mount point of our choice. The creation of a new filesystem is really simple, so it is not covered here.</p>
+
+<p>In order to utilize the remaining free space, first we expand the partition and then we expand the filesystem.
+As always make sure that the partitions are not mounted and that you are altering the proper ones. The following
+examples assume that the SD card is the device <code>/dev/sdb</code> and the root partition the <code>/dev/sdb2</code>.</p>
+
+<p>Start <code>fdisk</code>. The <code>p</code> command lists the partitions in the device <code>/dev/sdb</code>.</p>
+
+<p><div class="highlight"><pre><code class="text"># fdisk -u=sectors /dev/sdb
+   Command: p&lt;/p&gt;
+
+&lt;p&gt;Disk /dev/sdb: 7822 MB, 7822376960 bytes
+   241 heads, 62 sectors/track, 1022 cylinders, total 15278080 sectors
+   Units = sectors of 1 * 512 = 512 bytes
+   Sector size (logical/physical): 512 bytes / 512 bytes
+   I/O size (minimum/optimal): 512 bytes / 512 bytes
+   Disk identifier: 0x000c21e5&lt;/p&gt;
+
+&lt;p&gt;Device Boot      Start         End      Blocks   Id  System
+   /dev/sdb1   *        2048      194559       96256    c  W95 FAT32 (LBA)
+   /dev/sdb2          194560     3862527     1833984   83  Linux
+</code></pre></div></p>
+
+<p>Then, we delete the the second partition (the roor):</p>
+
+<p><div class="highlight"><pre><code class="text">Command (m for help): d 
+Partition number (1-4): 2
+Partition 2 is deleted
+</code></pre></div></p>
+
+<p>and re-create it. We create the new partition as primary and we set the last sector at the end of the SD card.
+The default settings should be fine here.</p>
+
+<p><div class="highlight"><pre><code class="text">Command (m for help): n
+Partition type:
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended
+Select (default p): p
+Partition number (1-4, default 2): 2
+First sector (186368-15278079, default 186368): 
+Using default value 186368
+Last sector, +sectors or +size{K,M,G} (186368-15278079, default 15278079): 
+Using default value 15278079
+Partition 2 of type Linux and of size 7.2 GiB is set
+</code></pre></div></p>
+
+<p>The partition is already set to Linux (83) so there is no need to alter it. Finally, save the changes:</p>
+
+<p><div class="highlight"><pre><code class="text">Command (m for help): w
+The partition table has been altered!&lt;/p&gt;
+
+&lt;p&gt;Calling ioctl() to re-read partition table.
+Syncing disks.
+</code></pre></div></p>
+
+<p>In order to expand the filesystem, first we run the checkdisk program to detect and fix inconsistencies and
+then use the resize program.</p>
+
+<p><div class="highlight"><pre><code class="text"># e2fsck -f /dev/sdb2
+# resize2fs /dev/sdb2
+</code></pre></div></p>
+
+<h3 id="ip-discovery-and-remote-login">IP discovery and remote login</h3>
+
+<p>The Arch Linux ARM image has the ssh deamon enabled by default. In order to login we must first
+determine which IP the rpi has acquired from the local network. This assumes that there is a
+working DHCP server on the LAN. One way to get the IP address is to check the DHCP logs or the router
+logs if DHCP is running from a router. As an alternative, we can run a ping scan on the LAN using
+nmap. Assuming that the lan subnet is 192.168.0.0 with mask 255.255.255.0 run:</p>
+
+<p><div class="highlight"><pre><code class="text"># nmap -PE -sn -n 192.168.0.0/24
+</code></pre></div></p>
+
+<p>After finding the IP login using the username and password <code>root</code>.</p>
+
+<h3 id="post-install-configuration">Post-install configuration</h3>
+
+<p>After you login, you should change the root password using <code>passwd</code>. Also, it is a good idea to re-generate
+the rsa and dsa keys.</p>
+
+<p><div class="highlight"><pre><code class="text"># ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N “” -t dsa
+# ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N “” -t rsa
+</code></pre></div></p>
+
+<p>Answer “yes” on prompt to overwrite. To run a full system upgrade run:</p>
+
+<p><div class="highlight"><pre><code class="text"># pacman -Syu
+</code></pre></div></p>
+
+<h3 id="memory-allocation">Memory allocation</h3>
+
+<p>Depending on the usage you are planning to do with the rpi it might be a good idea to adjust the RAM
+split between the CPU and the GPU. Edit the file <code>/boot/config.txt</code> file and change the value of the
+variable <code>gpu_mem_256</code> or <code>gpu_mem_521</code> depending on the rpi model you have.
+<a href="http://raspberrypi.stackexchange.com/a/1675">This post</a> shows the valid memory values. Note that you
+must also take into consideration the <code>cma_lwm</code> and <code>cma_hwm</code> variables. These variables allow dynamic
+memory management at runtime. Make sure that <code>gpu_mem_256</code> (or 512) value is higher than the high water mark
+<code>cma_hwm</code>. More info at the links on the bottom of this post.</p>
+
+<h3 id="sources-and-further-reading">Sources and further reading</h3>
+
+<ul>
+  <li><a href="http://raspberrypi.stackexchange.com/a/1675">memory allocation</a></li>
+  <li><a href="http://litwol.com/content/fdisk-resizegrow-physical-partition-without-losing-data-linodecom">resize physical parition</a></li>
+  <li><a href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=29&amp;t=19334&amp;p=218282&amp;hilit=cma#p217665">dynamic memory split</a></li>
+  <li><a href="http://elinux.org/RPi_config.txt#Memory">rpi memory configuration</a></li>
+  <li><a href="http://archlinuxarm.org/platforms/armv6/raspberry-pi">Arch Linux ARM for RPI</a></li>
+  <li><a href="https://wiki.archlinux.org/index.php/Beginners%27_Guide#Post-installation">Arch Linux post-installation notes</a></li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Archlinux presentation @ Openfest 2011]]></title>
+    <link href="http://www.kodama.gr/2011/04/09/archlinux-presentation-openfest-2011/"/>
+    <updated>2011-04-09T19:10:06+03:00</updated>
+    <id>http://www.kodama.gr/2011/04/09/archlinux-presentation-openfest-2011</id>
+    <content type="html"><![CDATA[<p><img src="http://farm7.static.flickr.com/6125/5959353918_bf30a8fa46_m.jpg" alt="archlinux" class="left" />
+You can find <a href="http://openfest.teipir.gr/slides/archlinux-openfest-2011.pdf">here</a> the Archlinux presentation I made with <a href="https://ebalaskas.gr/blog/?page=about">Evangelos Balaskas</a> at <a href="http://openfest.teipir.gr">Openfest 2011</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[running eagle on arch linux using libjpeg6]]></title>
+    <link href="http://www.kodama.gr/2009/10/01/running-eagle-on-arch-linux-using-libjpeg6/"/>
+    <updated>2009-10-01T13:58:30+03:00</updated>
+    <id>http://www.kodama.gr/2009/10/01/running-eagle-on-arch-linux-using-libjpeg6</id>
+    <content type="html"><![CDATA[<p>Eagle 5.6 depends on libjpeg6 to run. I case you have upgraded to libjpeg7 there are a few tricks to help you run eagle.</p>
+
+<p>One trick you should not use though is to make a libjpeg6 link, linking to libjpeg7.
+This could possibly mess up other application on your system.</p>
+
+<p>Install <a href="http://aur.archlinux.org/packages.php?ID=28427">libjpeg6</a> from AUR.</p>
+
+<p>If you don’t want to install libjpeg6 sytem-wide there is a more elegand way to fix it:
+1. grab a copy of libjpeg6
+2. put it somewhere inside your home directory or for example inside /opt/eagle/lib
+3. edit the launcher script (/usr/bin/eagle) and add before the exec ./eagle command:</p>
+
+<p><div class="highlight"><pre><code class="bash"><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/opt/eagle/lib
+</code></pre></div></p>
+
+<p>Grab <a href="http://aur.archlinux.org/packages.php?ID=15941">eagle</a> from AUR.</p>
+
+<p><strong>Update</strong>: as of 5.6.0-2 version in aur, you do not need to do the above steps as the PKGBUILD will take care everything for you.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,336 @@
+
+
+<!doctype html>
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>weechat howto - > kodama.gr_</title>
+    <meta name="author" content="Tasos Latsas">
+    
+    <meta name="description" content="weechat howto Dec 7th, 2010 Weechat (We Enhanced Environment for Chat) is a lightweight, extensible, console based irc client. It is written in C &hellip;">
+    
+    <meta name="viewport" content="width=device-width">
+    
+    <link rel="canonical" href="http://www.kodama.gr/2010/12/07/weechat-howto">
+    <link href="/favicon.png" rel="icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet">
+    <link href="//atom.xml" rel="alternate" title="> kodama.gr_" type="application/atom+xml">
+  </head>
+
+
+  <body >
+
+    <header>
+      <div class="grid-wrapper">
+  <div class="grid">
+
+    <div class="grid__item two-fifths lap-four-sixths palm-one-whole">
+  <a href="/" class="site-title">> kodama.gr_</a>
+</div>
+
+<div class="grid__item three-fifths lap-two-sixths palm-one-whole">
+  <nav>
+    <input type="checkbox" id="toggle">
+<label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+<ul class="menu pull-right">
+  <li><a href="/">blog</a></li>
+  <li><a href="/archives/">archives</a></li>
+  <!-- <li><a href="/tags/">tags</a></li> -->
+  <li><a href="/projects/">projects</a></li>
+  <li><a href="/about/">about</a></li>
+</ul>
+
+  </nav>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+    <div class="grid-wrapper">
+      <div class="grid grid-center">
+        
+        <div class="grid__item two-thirds lap-one-whole palm-one-whole">
+        
+
+          <article class="post">
+  <header>
+  
+  <h1 class="title indent">weechat howto</h1>
+  
+
+  
+  <div class="meta clearfix">
+    
+
+
+
+
+
+
+
+
+  
+
+
+<time class="pull-left" datetime="2010-12-07T19:49:52+02:00" pubdate data-updated="true"><i class="icon-calendar"></i> Dec 7<span>th</span>, 2010</time>
+    
+
+
+
+  
+
+    
+  </div>
+  
+</header>
+
+
+
+
+  <p><img src="http://farm7.static.flickr.com/6125/5959339312_4ef9321ec2_m.jpg" alt="weechat-front" class="right" />
+<a href="http://www.weechat.org/" title="weechat">Weechat</a> (We Enhanced Environment for Chat) is a lightweight, extensible, console based irc client. It is written in C and licensed under GNU GPL3.</p>
+
+<p>Launch weechat from console with the weechat-curses command.</p>
+
+<p>One of the most important commands is the <strong>/help</strong> command. So, when in doubt use /help.
+Also using the command <strong>/set config.section.option</strong> will print the value of <strong>config.section.option</strong> and if you want to set a value to an option you type <strong>/set config.section.option value</strong>
+Anyway, lets start by building our configuration to connect to freenode.</p>
+
+<p>Start by printing all  <strong>irc.server</strong> values.</p>
+
+<div class="highlight"><pre><code class="text">/set irc.server.
+</code></pre></div>
+
+<p>you will get the response:</p>
+
+<div class="highlight"><pre><code class="text">[server]
+irc.server.freenode.addresses  = &quot;chat.freenode.net/6667&quot;
+irc.server.freenode.autoconnect
+irc.server.freenode.autojoin
+irc.server.freenode.autoreconnect
+irc.server.freenode.autoreconnect_delay
+irc.server.freenode.autorejoin
+irc.server.freenode.autorejoin_delay
+irc.server.freenode.command
+irc.server.freenode.command_delay
+irc.server.freenode.ipv6
+irc.server.freenode.local_hostname
+irc.server.freenode.nicks
+irc.server.freenode.password
+irc.server.freenode.proxy
+irc.server.freenode.realname
+irc.server.freenode.sasl_mechanism
+irc.server.freenode.sasl_password
+irc.server.freenode.sasl_timeout
+irc.server.freenode.sasl_username
+irc.server.freenode.ssl
+irc.server.freenode.ssl_cert
+irc.server.freenode.ssl_dhkey_size
+irc.server.freenode.ssl_verify
+irc.server.freenode.username
+</code></pre></div>
+
+<p>As you can see freenode is already in the configuration by default <em>(irc.server.freenode.addresses  = “chat.freenode.net/6667”)</em>. If you need to add another server use e.g.:</p>
+
+<div class="highlight"><pre><code class="text">/server add oftc irc.oftc.net/6667
+</code></pre></div>
+
+<p>Now, all we need to do is set the rest of the values for the freenode server.
+To get help for a particular option -including the list of expected values- type e.g.:</p>
+
+<div class="highlight"><pre><code class="text">/help irc.server.freenode.autoconnect
+</code></pre></div>
+
+<p>So, we want to connect to freenode by default and reconnect automatically in case of connection problems:</p>
+
+<div class="highlight"><pre><code class="text">/set irc.server.freenode.autoconnect on
+/set irc.server.freenode.autoreconnect on
+</code></pre></div>
+
+<p>Next we need to automatically join some channels, for multiple channels use commas as separators <strong>without</strong> spaces:</p>
+
+<div class="highlight"><pre><code class="text">/set irc.server.freenode.autojoin = &quot;#archlinux,#archlinux-offtopic,#archlinux-greece&quot;
+</code></pre></div>
+
+<p>After that we need to set our nicknames (also comma separated), username and realname (these are optional):</p>
+
+<div class="highlight"><pre><code class="text">/set irc.server.freenode.nicks = &quot;nick1,nick2,nick3&quot;
+/set irc.server.freenode.username = &quot;my-user-name&quot;
+/set irc.server.freenode.realname = &quot;my-real-name&quot;
+</code></pre></div>
+
+<p>Last but not least set the irc command to identify with the freenode server with :</p>
+
+<div class="highlight"><pre><code class="text">/set irc.server.freenode.command = &quot;/msg NickServ identify &lt;your-password-goes-here&gt;&quot;
+</code></pre></div>
+
+<p>Save your configuration with the <strong>/save</strong> command and restart weechat, <strong>/EXIT</strong> exits weechat.
+Now you should be connected to freenode!</p>
+
+<p>Time for some keybindings!!
+* <strong>F5</strong> / <strong>F6</strong> : Cycle through the buffers
+* <strong>PageUp</strong> / <strong>PageDown</strong> : scroll up/down main chat area
+* <strong>F11</strong> / <strong>F12</strong> : scroll nickname list up/down</p>
+
+<p>If you are running terminator and have problems with F11 interpreted as “go to full screen” add this to your <strong>~/.config/terminator/config</strong> :</p>
+
+<div class="highlight"><pre><code class="text">[keybindings]
+  full_screen = Disabled
+</code></pre></div>
+
+<p>If you have the same problem with xfce Terminal go to <strong>Edit -&gt; Preferences -&gt; Shortcuts</strong> and kill the nasty fullscreen shortcut!</p>
+
+<p><img src="http://farm7.static.flickr.com/6129/5958779741_0230c56db1_m.jpg" alt="weechat-rooms" class="right" />
+Lastly the cool stuff!
+Weechat allows you to split the screen and have multiple channels open at the same time. Use the <strong>/window splitv</strong> to vertically split the screen and <strong>/window splith</strong> to horizontally split the screen. You can also provide a percentage to unevenly split the screen and use <strong>/window merge all</strong> to unify all buffers to default.
+When you are happy with your window layout save it:</p>
+
+<div class="highlight"><pre><code class="text">/layout save
+</code></pre></div>
+
+<p>To automatically save window layout on exit use :</p>
+
+<div class="highlight"><pre><code class="text">/set weechat.look.save_layout_on_exit all
+</code></pre></div>
+
+<p>When in split mode use <strong>F7</strong> / <strong>F8</strong> to cycle through the active windows-buffers.</p>
+
+<p>More resources:</p>
+
+<ul>
+  <li><a href="http://www.weechat.org/files/doc/stable/weechat_quickstart.en.html">Weechat Quickstart</a></li>
+  <li><a href="http://www.weechat.org/files/doc/stable/weechat_user.en.html">Weechat User’s Guide</a></li>
+  <li><a href="http://www.wikihow.com/Register-a-User-Name-on-Freenode">How to register a username to freenode</a></li>
+  <li><a href="http://www.weechat.org/scripts/">Weechat scrips</a></li>
+</ul>
+
+
+</article>
+
+ 
+<section id="disqus">
+  <h1 class="indent title">Comments</h1>
+  <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+        
+        </div>
+        
+        
+        <aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
+          <div class="grid">
+
+  
+<section class="social aside-module grid__item one-whole lap-one-half">
+  <h1 class="title delta">
+    Follow me!
+  </h1>
+  <ul class="unstyled">
+    
+    
+    <li><a class="github" href="//github.com/tlatsas"><i class="icon-github"></i> Github</a></li>
+    
+    <li><a class="gplus" href="//plus.google.com/113297710160205489384"><i class="icon-google-plus-sign"></i> Google+</a></li>
+    <li><a class="linkedin" href="//linkedin.com/in/tasoslatsas"><i class="icon-linkedin-sign"></i> LinkedIn</a></li>
+    
+    <li><a class="stackoverflow" href="//stackoverflow.com/users/1208521"><i class="icon-stackexchange"></i> StackOverflow</a></li>
+    <li><a class="twitter" href="//twitter.com/tlatsas"><i class="icon-twitter"></i> Twitter</a></li>
+    
+  </ul>
+</section>
+
+
+  <section id="recent-posts" class="aside-module grid__item one-whole lap-one-half">
+  <h1 class="title delta">Recent Posts</h1>
+  <ul class="divided">
+    
+      <li class="post">
+        <a href="/2013/07/28/using-git-rebase-to-remove-duplicate-cherry-picked-commits/">using git rebase to remove duplicate cherry-picked commits</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/07/23/preview-sphinx-documentation/">preview sphinx documentation</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/04/29/installing-Arch-Linux-ARM-in-Raspberry-Pi/">installing Arch Linux ARM in Raspberry Pi</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/28/adjusting-HDD-spindown-with-systemd-service-files/">adjusting HDD spindown with systemd service files</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/09/22/migrate-disqus-comments-for-jekyll-pretty-url/">migrate disqus comments for jekyll's pretty urls</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+</div>
+
+        </aside>
+        
+      </div>
+    </div>
+    
+    <footer>
+      <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <p class="copyright">
+  All content by Tasos Latsas and licenced under <a href="//creativecommons.org/licenses/by-nc-sa/3.0/ie/">Creative Commons</a>.<br>
+  Code under <a href="//github.com/coogie/oscailte/blob/master/README.md">MIT Licence</a>.
+</p>
+    </div>
+  </div>
+</div>
+
+    </footer>
+
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+<script defer src="/javascripts/octopress.js"></script>
+
+
+
+
+<script>
+  var disqus_shortname = 'tlgh';
+  
+    
+    // var disqus_developer = 1;
+    var disqus_identifier = 'http://www.kodama.gr/2010/12/07/weechat-howto/';
+    var disqus_url = 'http://www.kodama.gr/2010/12/07/weechat-howto/';
+    var disqus_script = 'embed.js';
+  
+  (function () {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  }());
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

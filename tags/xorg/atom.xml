@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Xorg | > kodama.gr_]]></title>
+  <link href="http://www.kodama.gr/tags/xorg/atom.xml" rel="self"/>
+  <link href="http://www.kodama.gr/"/>
+  <updated>2013-10-13T14:34:25+03:00</updated>
+  <id>http://www.kodama.gr/</id>
+  <author>
+    <name><![CDATA[Tasos Latsas]]></name>
+    <email><![CDATA[tlatsas@gmx.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[xorg - proper greek keyboard layout]]></title>
+    <link href="http://www.kodama.gr/2011/03/11/xorg-proper-greek-keyboard-layout/"/>
+    <updated>2011-03-11T09:53:39+02:00</updated>
+    <id>http://www.kodama.gr/2011/03/11/xorg-proper-greek-keyboard-layout</id>
+    <content type="html"><![CDATA[<p>I was getting recently a lot random crashes with xfce4-xkb-plugin.
+Also when I opened the plugin properties the greek layout variant text was all scrambled and ineligible.
+Having searched through the internet and bug trackers I couldn’t find something similar so I started suspecting that my setup was broken.
+A look in <em><strong>/usr/share/X11/xkb/rules/xorg.lst</strong></em> showed me that the greek layout was ‘gr’ and not ‘el’ as I had specified it.</p>
+
+<p>You can get the greek layout code with:
+<div class="highlight"><pre><code class="bash">grep -i ‘greece’ /usr/share/X11/xkb/rules/xorg.lst
+</code></pre></div></p>
+
+<p>and the keyboard variants with:
+<div class="highlight"><pre><code class="bash">grep ‘gr:’ /usr/share/X11/xkb/rules/xorg.lst
+</code></pre></div></p>
+
+<p>so this is how my (correct) keyboard settings look:</p>
+
+<p><div class="highlight"><pre><code class="text">Section “InputClass”
+  Identifier       “Keyboard Defaults”
+  MatchIsKeyboard  “yes”
+  Option           “XkbLayout” “us, gr”
+  Option           “XkbVariant” “,extended”
+  Option           “XkbOptions” “grp:alt_shift_toggle, terminate:ctrl_alt_bksp,
+lv3:ralt_switch_multikey, eurosign:e”
+EndSection
+</code></pre></div></p>
+
+<p>(The lv3 multikey option is used to type ligatures see: <a href="http://shtrom.ssji.net/skb/xorg-ligatures.html">http://shtrom.ssji.net/skb/xorg-ligatures.html</a>)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Enable Ctrl-Alt-Backspace in Xorg]]></title>
+    <link href="http://www.kodama.gr/2010/09/14/enable-ctrl-alt-backspace-in-xorg/"/>
+    <updated>2010-09-14T12:11:25+03:00</updated>
+    <id>http://www.kodama.gr/2010/09/14/enable-ctrl-alt-backspace-in-xorg</id>
+    <content type="html"><![CDATA[<p>Add
+<div class="highlight"><pre><code class="text">Option             “XkbOptions” “terminate:ctrl_alt_bksp”
+</code></pre></div>
+to your Keyboard InputClass to enable Ctrl+Alt+Backspace to kill your x server</p>
+]]></content>
+  </entry>
+  
+</feed>
