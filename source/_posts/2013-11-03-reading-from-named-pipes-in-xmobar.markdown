@@ -20,8 +20,8 @@ We create the pipe only if it does not exists. That way we can logout/login with
 
 Next we need to configure xmobar to read from this pipe. Edit your `xmobar.hs` and put in the `command` list:
 
-```haskell
-Run PipeReader "/tmp/.volume-pipe" "vol_pipe"
+``` haskell xmobar.hs
+, Run PipeReader "/tmp/.volume-pipe" "vol_pipe"
 ```
 
 This registers the PipeReader plugin to read from `/tmp/.volume-pipe`. It also makes the `vol_pipe` alias available in the output template. The template is used to describe how to display information gathered from the plugins. I use something like this to show the volume levels: `♫ <fc=#b4cdcd>%vol_pipe%</fc>`.
