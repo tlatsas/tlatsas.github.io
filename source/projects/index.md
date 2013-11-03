@@ -11,6 +11,19 @@ Source code for [xcolors.net][xcolors-net]. A flask-powered color theme director
 Xresources-aware terminals. Contains a parser that generates the theme templates when the flask
 starts, much like a static page generator, but instead of html it generates jinja2 templates.
 
+### [jinja2-highlight][j2h]
+A jinja2 extension that uses Pygments to highlight source code blocks. Works well with the Flask micro-framework.
+
+### [chop][chop]
+Simple url shortener using sinatra and redis.
+
+### [sphinx-serve][sphinx-serve]
+Launches a simple http server to preview sphinx documentation locally.
+
+### [ipz][ipz]
+A service that shows your public IP address, it also supports json responses.
+Written in Node.js, [deployed at heroku][ipz-h].
+
 ### [omup][omup]
 Command line ompldr.org uploader written in Python.
 Does not depend on cURL or other external modules.
@@ -21,13 +34,6 @@ Matlab and Octave. You supply an array of 1s and 0s and get a [nice plot][lc-wik
 
 ### [darui][darui]
 Searches RSS feeds and matches entries with sets of keywords, then emails results.
-
-### [ipz][ipz]
-A service that shows your public IP address, it also supports json responses.
-Written in Node.js, [deployed at heroku][ipz-h].
-
-### [jinja2-highlight][j2h]
-A jinja2 extension that uses Pygments to highlight source code blocks. Tested with flask framework.
 
 ### [sensors-test for android][sensors]
 Android application that displays data from the device's accelerometer and magnetic sensors.
@@ -77,3 +83,5 @@ All sources are under the [incident locator organization][ilocp] on github.
 [util]: https://github.com/tlatsas/utils-scripts
 [aur]: https://aur.archlinux.org/packages.php?SeB=m&K=tasidus
 [ilocp]: https://github.com/ilocp
+[chop]: https://github.com/tlatsas/chop
+[sphinx-serve]: https://github.com/tlatsas/sphinx-serve
