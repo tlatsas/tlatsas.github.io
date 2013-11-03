@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: xmobar | > kodama.gr_]]></title>
+  <link href="http://www.kodama.gr/tags/xmobar/atom.xml" rel="self"/>
+  <link href="http://www.kodama.gr/"/>
+  <updated>2013-11-03T18:00:43+02:00</updated>
+  <id>http://www.kodama.gr/</id>
+  <author>
+    <name><![CDATA[Tasos Latsas]]></name>
+    <email><![CDATA[tlatsas@gmx.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[reading from named pipes in xmobar]]></title>
+    <link href="http://www.kodama.gr/2013/11/03/reading-from-named-pipes-in-xmobar/"/>
+    <updated>2013-11-03T19:38:43+02:00</updated>
+    <id>http://www.kodama.gr/2013/11/03/reading-from-named-pipes-in-xmobar</id>
+    <content type="html"><![CDATA[<p>I recently noticed that <a href="[https://github.com/jaor/xmobar">xmobar</a> has a plugin to read data from Unix named pipes. Named pipes can be used for inter-process communication (IPC). Two different application can send and read data using named pipes. A named pipe operates much like the normal (unnamed) pipe you use in the shell. The difference is that named pipes must be explicitly created/deleted and they are accessed through the filesystem. You create named pipes using the <code>mknod</code> or <code>mkfifo</code> commands and delete them with <code>rm</code>.</p>
+
+<p>In this tutorial we will use named pipes to read the current volume levels and display them in xmobar. Xmobar also has an <a href="https://github.com/jaor/xmobar/blob/master/readme.md#volume-mixer-element-args-refreshrate">alsa plugin</a> but distributions do not always compile xmobar with alsa support. An alternative approach is to write a small script that will parse the output of the <code>amixer</code> command and then call it from xmobar in regular intervals to show the current volume levels. This however requires xmobar to frequently call an external command/script. Also if you happen to use a large frequency you might notice some “lag” from the time you change the volume levels to the time this change is reflected in xmobar. Using named pipes this change is instant and you also void redundant calls.</p>
+
+<p>First, we need to create our named pipe. All my startup logic is inside a script which is called from <code>~/.xinitrc</code>. For simplicity let’s create the pipe inside the <code>~/.xinitrc</code> before launching the window manager.</p>
+
+<p><code>bash
+_volume_pipe=/tmp/.volume-pipe
+[[ -S $_volume_pipe ]] || mkfifo $_volume_pipe
+</code>
+We create the pipe only if it does not exists. That way we can logout/login without getting any “File exists” errors. My <code>/tmp</code> is mounted as tmpfs so the pipes do not survive a reboot.</p>
+
+<p>Next we need to configure xmobar to read from this pipe. Edit your <code>xmobar.hs</code> and put in the <code>command</code> list:</p>
+
+<p><code>haskell xmobar.hs
+, Run PipeReader "/tmp/.volume-pipe" "vol_pipe"
+</code></p>
+
+<p>This registers the PipeReader plugin to read from <code>/tmp/.volume-pipe</code>. It also makes the <code>vol_pipe</code> alias available in the output template. The template is used to describe how to display information gathered from the plugins. I use something like this to show the volume levels: <code>♫ &lt;fc=#b4cdcd&gt;%vol_pipe%&lt;/fc&gt;</code>.</p>
+
+<p>Basically, now you can pretty much feed anything to the xmobar through the pipe and it will display it without hesitation. Just write something to the pipe:</p>
+
+<p><code>bash
+echo "something" &gt; /tmp/.volume-pipe
+</code></p>
+
+<p>In order to display the volume information we will create a small script which can be used to increase/decrease/mute/show the volume levels. After each operation it will send the output to the named pipe. I already have <a href="https://github.com/tlatsas/dotfiles/blob/master/bin/alsavol">a script</a> I use for this purpose, but let’s write something simpler.</p>
+
+<p>```bash volume.sh
+#!/usr/bin/bash</p>
+
+<p>get_volume() {
+  # return volume levels (0-100)
+  vol=$(amixer sget Master | grep -o -m 1 ‘[[:digit:]]*%’ | tr -d ‘%’)
+  echo ${vol}% | tee /tmp/.volume-pipe
+}</p>
+
+<p>case $1 in
+  “”)
+    ;;
+  “up”)
+    amixer set Master 5+ &gt;/dev/null
+    ;;
+  “down”)
+    amixer set Master 5- &gt; /dev/null
+    ;;
+  “toggle”)
+    amixer set Master “toggle” &gt;/dev/null
+    ;;
+  *)
+    echo “unknown command”
+    exit 1
+    ;;
+esac
+get_volume</p>
+
+<p>```</p>
+
+<p>The key point here is to send the output after each operation to the pipe (line 6), a simple redirection will do the trick. We use <code>tee</code> to send the volume output both in the stdout and in the named pipe.</p>
+
+<p>The only problem is that when the xmobar first starts, it does not have any data to read from the pipe, so it displays this annoying message: “Updating…”. In order to fix that we can run our script a single time after we create the pipe inside the <code>.xinitrc</code>.</p>
+
+<p><code>bash
+_volume_pipe=/tmp/.volume-pipe
+[[ -S $_volume_pipe ]] || mkfifo $_volume_pipe
+/path/to/script/volume.sh
+</code></p>
+
+<p>more reading about named pipes and xmobar:</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Named_pipe">named pipes (wikipedia)</a></li>
+  <li><a href="http://www.linuxjournal.com/article/2156">introduction to named pipes</a></li>
+  <li><a href="https://github.com/jaor/xmobar/blob/master/readme.md">xmobar documentation</a></li>
+</ul>
+]]></content>
+  </entry>
+  
+</feed>

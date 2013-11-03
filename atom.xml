@@ -4,7 +4,7 @@
   <title><![CDATA[> kodama.gr_]]></title>
   <link href="http://www.kodama.gr/atom.xml" rel="self"/>
   <link href="http://www.kodama.gr/"/>
-  <updated>2013-10-13T14:34:25+03:00</updated>
+  <updated>2013-11-03T18:00:43+02:00</updated>
   <id>http://www.kodama.gr/</id>
   <author>
     <name><![CDATA[Tasos Latsas]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[reading from named pipes in xmobar]]></title>
+    <link href="http://www.kodama.gr/2013/11/03/reading-from-named-pipes-in-xmobar/"/>
+    <updated>2013-11-03T19:38:43+02:00</updated>
+    <id>http://www.kodama.gr/2013/11/03/reading-from-named-pipes-in-xmobar</id>
+    <content type="html"><![CDATA[<p>I recently noticed that <a href="[https://github.com/jaor/xmobar">xmobar</a> has a plugin to read data from Unix named pipes. Named pipes can be used for inter-process communication (IPC). Two different application can send and read data using named pipes. A named pipe operates much like the normal (unnamed) pipe you use in the shell. The difference is that named pipes must be explicitly created/deleted and they are accessed through the filesystem. You create named pipes using the <code>mknod</code> or <code>mkfifo</code> commands and delete them with <code>rm</code>.</p>
+
+<p>In this tutorial we will use named pipes to read the current volume levels and display them in xmobar. Xmobar also has an <a href="https://github.com/jaor/xmobar/blob/master/readme.md#volume-mixer-element-args-refreshrate">alsa plugin</a> but distributions do not always compile xmobar with alsa support. An alternative approach is to write a small script that will parse the output of the <code>amixer</code> command and then call it from xmobar in regular intervals to show the current volume levels. This however requires xmobar to frequently call an external command/script. Also if you happen to use a large frequency you might notice some “lag” from the time you change the volume levels to the time this change is reflected in xmobar. Using named pipes this change is instant and you also void redundant calls.</p>
+
+<p>First, we need to create our named pipe. All my startup logic is inside a script which is called from <code>~/.xinitrc</code>. For simplicity let’s create the pipe inside the <code>~/.xinitrc</code> before launching the window manager.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">_volume_pipe</span><span class="o">=</span>/tmp/.volume-pipe
+</span><span class="line"><span class="o">[[</span> -S <span class="nv">$_volume_pipe</span> <span class="o">]]</span> <span class="o">||</span> mkfifo <span class="nv">$_volume_pipe</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>We create the pipe only if it does not exists. That way we can logout/login without getting any “File exists” errors. My <code>/tmp</code> is mounted as tmpfs so the pipes do not survive a reboot.</p>
+
+<p>Next we need to configure xmobar to read from this pipe. Edit your <code>xmobar.hs</code> and put in the <code>command</code> list:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>xmobar.hs</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="haskell"><span class="line"><span class="p">,</span> <span class="kt">Run</span> <span class="kt">PipeReader</span> <span class="s">&quot;/tmp/.volume-pipe&quot;</span> <span class="s">&quot;vol_pipe&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This registers the PipeReader plugin to read from <code>/tmp/.volume-pipe</code>. It also makes the <code>vol_pipe</code> alias available in the output template. The template is used to describe how to display information gathered from the plugins. I use something like this to show the volume levels: <code>♫ &lt;fc=#b4cdcd&gt;%vol_pipe%&lt;/fc&gt;</code>.</p>
+
+<p>Basically, now you can pretty much feed anything to the xmobar through the pipe and it will display it without hesitation. Just write something to the pipe:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nb">echo</span> <span class="s2">&quot;something&quot;</span> &gt; /tmp/.volume-pipe
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>In order to display the volume information we will create a small script which can be used to increase/decrease/mute/show the volume levels. After each operation it will send the output to the named pipe. I already have <a href="https://github.com/tlatsas/dotfiles/blob/master/bin/alsavol">a script</a> I use for this purpose, but let’s write something simpler.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>volume.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c">#!/usr/bin/bash</span>
+</span><span class="line">
+</span><span class="line">get_volume<span class="o">()</span> <span class="o">{</span>
+</span><span class="line">  <span class="c"># return volume levels (0-100)</span>
+</span><span class="line">  <span class="nv">vol</span><span class="o">=</span><span class="k">$(</span>amixer sget Master | grep -o -m 1 <span class="s1">&#39;[[:digit:]]*%&#39;</span> | tr -d <span class="s1">&#39;%&#39;</span><span class="k">)</span>
+</span><span class="line">  <span class="nb">echo</span> <span class="k">${</span><span class="nv">vol</span><span class="k">}</span>% | tee /tmp/.volume-pipe
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="k">case</span> <span class="nv">$1</span> in
+</span><span class="line">  <span class="s2">&quot;&quot;</span><span class="o">)</span>
+</span><span class="line">    ;;
+</span><span class="line">  <span class="s2">&quot;up&quot;</span><span class="o">)</span>
+</span><span class="line">    amixer <span class="nb">set </span>Master 5+ &gt;/dev/null
+</span><span class="line">    ;;
+</span><span class="line">  <span class="s2">&quot;down&quot;</span><span class="o">)</span>
+</span><span class="line">    amixer <span class="nb">set </span>Master 5- &gt; /dev/null
+</span><span class="line">    ;;
+</span><span class="line">  <span class="s2">&quot;toggle&quot;</span><span class="o">)</span>
+</span><span class="line">    amixer <span class="nb">set </span>Master <span class="s2">&quot;toggle&quot;</span> &gt;/dev/null
+</span><span class="line">    ;;
+</span><span class="line">  *<span class="o">)</span>
+</span><span class="line">    <span class="nb">echo</span> <span class="s2">&quot;unknown command&quot;</span>
+</span><span class="line">    <span class="nb">exit </span>1
+</span><span class="line">    ;;
+</span><span class="line"><span class="k">esac</span>
+</span><span class="line">get_volume
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The key point here is to send the output after each operation to the pipe (line 6), a simple redirection will do the trick. We use <code>tee</code> to send the volume output both in the stdout and in the named pipe.</p>
+
+<p>The only problem is that when the xmobar first starts, it does not have any data to read from the pipe, so it displays this annoying message: “Updating…”. In order to fix that we can run our script a single time after we create the pipe inside the <code>.xinitrc</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nv">_volume_pipe</span><span class="o">=</span>/tmp/.volume-pipe
+</span><span class="line"><span class="o">[[</span> -S <span class="nv">$_volume_pipe</span> <span class="o">]]</span> <span class="o">||</span> mkfifo <span class="nv">$_volume_pipe</span>
+</span><span class="line">/path/to/script/volume.sh
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>more reading about named pipes and xmobar:</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Named_pipe">named pipes (wikipedia)</a></li>
+  <li><a href="http://www.linuxjournal.com/article/2156">introduction to named pipes</a></li>
+  <li><a href="https://github.com/jaor/xmobar/blob/master/readme.md">xmobar documentation</a></li>
+</ul>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[using git rebase to remove duplicate cherry-picked commits]]></title>
