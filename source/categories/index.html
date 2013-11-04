@@ -1,0 +1,15 @@
+---
+layout: page
+title: "post categories"
+date: 2013-07-28 23:11
+comments: false
+sharing: false
+footer: true
+---
+<ul class="category-list">
+{% for item in site.categories %}
+    <li>
+        <a href="/categories/{{ item[0] }}/"><span class="gamma">{{ item[0] | capitalize }}</span></a> [ {{ item[1].size }} ]
+    </li>
+{% endfor %}
+</ul>
