@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: documentation | > kodama.gr_]]></title>
+  <link href="http://www.kodama.gr/categories/documentation/atom.xml" rel="self"/>
+  <link href="http://www.kodama.gr/"/>
+  <updated>2013-11-04T20:58:42+02:00</updated>
+  <id>http://www.kodama.gr/</id>
+  <author>
+    <name><![CDATA[Tasos Latsas]]></name>
+    <email><![CDATA[tlatsas@gmx.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[preview sphinx documentation]]></title>
+    <link href="http://www.kodama.gr/2013/07/23/preview-sphinx-documentation/"/>
+    <updated>2013-07-23T11:28:59+03:00</updated>
+    <id>http://www.kodama.gr/2013/07/23/preview-sphinx-documentation</id>
+    <content type="html"><![CDATA[<p>I recently released a very small utility called <a href="https://github.com/tlatsas/sphinx-serve">sphinx-serve</a> which
+helps me preview sphinx documentation locally. It spawns a simple http
+server on the documentation folder (html or singlehtml).</p>
+
+<p>Installation is very simple, in the same virtual environment with your
+sphinx documentation issue <code>pip install sphinx-serve</code>. This will make
+the <strong>sphinx-serve</strong> command available.</p>
+
+<p>When you issue the above command the scipt tries to detect the build
+folder of the documentation. It searches the current working directory
+plus it navigates backwards in case you are in a deeper level (much
+like the bundler utility). When it finds the build folder (the folder
+name is configurable through the <code>--build</code> argument) it spawns a simple
+http server. It serves files from the <strong>http</strong> folder (default) or from
+the <strong>singlehtml</strong> folder if <code>--single</code> is supplied.</p>
+
+<p>It is handy to add the sphinx-serve command with any required arguments
+to the sphinx Makefile:</p>
+
+<pre><code>preview:
+    sphinx-serve --single --port 4000
+</code></pre>
+
+<p>now you can easily preview your documentation by issuing <code>make preview</code>.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

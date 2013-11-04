@@ -11,8 +11,8 @@
     <title>sorting null values last in CakePHP - > kodama.gr_</title>
     <meta name="author" content="Tasos Latsas">
     
-    <meta name="description" content="sorting null values last in CakePHP Jan 20th, 2012 Assume your data contain a field with some NULL and some not NULL values.
-If you want to sort &hellip;">
+    <meta name="description" content="sorting null values last in CakePHP Jan 20th, 2012 php cakephp Assume your data contain a field with some NULL and some not NULL values.
+If you want &hellip;">
     
     <meta name="viewport" content="width=device-width">
     
@@ -40,7 +40,7 @@ If you want to sort &hellip;">
 <ul class="menu pull-right">
   <li><a href="/">blog</a></li>
   <li><a href="/archives/">archives</a></li>
-  <!-- <li><a href="/tags/">tags</a></li> -->
+  <li><a href="/categories/">categories</a></li>
   <li><a href="/projects/">projects</a></li>
   <li><a href="/about/">about</a></li>
 </ul>
@@ -85,6 +85,17 @@ If you want to sort &hellip;">
 
 
 
+  
+  <div class="pull-left">
+    <i class="icon-tags"></i>
+    <ul class="tags unstyled">
+    
+      <li><a href="/categories/php/">php</a></li>
+    
+      <li><a href="/categories/cakephp/">cakephp</a></li>
+    
+    </ul>
+  </div>
   
 
     
@@ -178,6 +189,25 @@ taking it into account.</p>
   </ul>
 </section>
 
+<section id="github-repos" class="aside-module grid__item one-whole lap-one-half">
+  <h1 class="title delta">
+    GitHub Repos
+    
+    <small class="pull-right">
+      <a class="btn" href="//github.com/tlatsas" title="@tlatsas on GitHub" target="_blank">
+        <i class="icon-external-link"></i>
+      </a>
+    </small>
+    
+  </h1>
+  <ul id="gh_repos" class="divided">
+    <li class="loading">
+      <i class="icon-spinner icon-spin"></i>
+    </li>
+  </ul>
+</section>
+
+
 
 </div>
 
@@ -229,6 +259,26 @@ taking it into account.</p>
 
 
 
+
+<script>
+  $(document).ready(function(){
+    if (!window.jXHR){
+      var jxhr = document.createElement('script');
+      jxhr.type = 'text/javascript';
+      jxhr.src = '/javascripts/libs/jXHR.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jxhr, s);
+    }
+
+    github.showRepos({
+      user: 'tlatsas',
+      count: 5,
+      skip_forks: false,
+      target: '#gh_repos'
+    });
+  });
+</script>
+<script src="/javascripts/github.js"></script>
 
 
 

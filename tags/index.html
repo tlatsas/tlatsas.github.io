@@ -11,7 +11,7 @@
     <title>tags - > kodama.gr_</title>
     <meta name="author" content="Tasos Latsas">
     
-    <meta name="description" content="tags Mysql [ 2 ] Virtualbox [ 1 ] Archlinux [ 3 ] Eagle [ 1 ] Xorg [ 2 ] Weechat [ 2 ] Alsa [ 1 ] Python [ 2 ] Jekyll [ 2 ] Bash [ 1 ] Front-matter &hellip;">
+    <meta name="description" content=" tags ">
     
     <meta name="viewport" content="width=device-width">
     
@@ -39,7 +39,7 @@
 <ul class="menu pull-right">
   <li><a href="/">blog</a></li>
   <li><a href="/archives/">archives</a></li>
-  <!-- <li><a href="/tags/">tags</a></li> -->
+  <li><a href="/categories/">categories</a></li>
   <li><a href="/projects/">projects</a></li>
   <li><a href="/about/">about</a></li>
 </ul>
@@ -67,58 +67,6 @@
 
 
 <ul>
-
-    <li><a href="/tags/mysql/">Mysql</a> [ 2 ]</li>
-
-    <li><a href="/tags/virtualbox/">Virtualbox</a> [ 1 ]</li>
-
-    <li><a href="/tags/archlinux/">Archlinux</a> [ 3 ]</li>
-
-    <li><a href="/tags/eagle/">Eagle</a> [ 1 ]</li>
-
-    <li><a href="/tags/Xorg/">Xorg</a> [ 2 ]</li>
-
-    <li><a href="/tags/weechat/">Weechat</a> [ 2 ]</li>
-
-    <li><a href="/tags/alsa/">Alsa</a> [ 1 ]</li>
-
-    <li><a href="/tags/python/">Python</a> [ 2 ]</li>
-
-    <li><a href="/tags/jekyll/">Jekyll</a> [ 2 ]</li>
-
-    <li><a href="/tags/bash/">Bash</a> [ 1 ]</li>
-
-    <li><a href="/tags/front-matter/">Front-matter</a> [ 1 ]</li>
-
-    <li><a href="/tags/php/">Php</a> [ 1 ]</li>
-
-    <li><a href="/tags/cakephp/">Cakephp</a> [ 1 ]</li>
-
-    <li><a href="/tags/pentadactyl/">Pentadactyl</a> [ 1 ]</li>
-
-    <li><a href="/tags/vimperator/">Vimperator</a> [ 1 ]</li>
-
-    <li><a href="/tags/firefox/">Firefox</a> [ 1 ]</li>
-
-    <li><a href="/tags/disqus/">Disqus</a> [ 1 ]</li>
-
-    <li><a href="/tags/systemd/">Systemd</a> [ 1 ]</li>
-
-    <li><a href="/tags/rpi/">Rpi</a> [ 1 ]</li>
-
-    <li><a href="/tags/sphinx/">Sphinx</a> [ 1 ]</li>
-
-    <li><a href="/tags/documentation/">Documentation</a> [ 1 ]</li>
-
-    <li><a href="/tags/release/">Release</a> [ 1 ]</li>
-
-    <li><a href="/tags/git/">Git</a> [ 1 ]</li>
-
-    <li><a href="/tags/rebase/">Rebase</a> [ 1 ]</li>
-
-    <li><a href="/tags/cherry-pick/">Cherry-pick</a> [ 1 ]</li>
-
-    <li><a href="/tags/xmobar/">Xmobar</a> [ 1 ]</li>
 
 </ul>
 
@@ -177,6 +125,25 @@
   </ul>
 </section>
 
+<section id="github-repos" class="aside-module grid__item one-whole lap-one-half">
+  <h1 class="title delta">
+    GitHub Repos
+    
+    <small class="pull-right">
+      <a class="btn" href="//github.com/tlatsas" title="@tlatsas on GitHub" target="_blank">
+        <i class="icon-external-link"></i>
+      </a>
+    </small>
+    
+  </h1>
+  <ul id="gh_repos" class="divided">
+    <li class="loading">
+      <i class="icon-spinner icon-spin"></i>
+    </li>
+  </ul>
+</section>
+
+
 
 </div>
 
@@ -212,6 +179,26 @@
 
 
 
+
+<script>
+  $(document).ready(function(){
+    if (!window.jXHR){
+      var jxhr = document.createElement('script');
+      jxhr.type = 'text/javascript';
+      jxhr.src = '/javascripts/libs/jXHR.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jxhr, s);
+    }
+
+    github.showRepos({
+      user: 'tlatsas',
+      count: 5,
+      skip_forks: false,
+      target: '#gh_repos'
+    });
+  });
+</script>
+<script src="/javascripts/github.js"></script>
 
 
 

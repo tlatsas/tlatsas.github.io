@@ -11,8 +11,7 @@
     <title>installing Arch Linux ARM in Raspberry Pi - > kodama.gr_</title>
     <meta name="author" content="Tasos Latsas">
     
-    <meta name="description" content="installing Arch Linux ARM in Raspberry Pi Apr 29th, 2013 This tutorial guides you through the process of installing the ARM flavour of
-Arch Linux in &hellip;">
+    <meta name="description" content="installing Arch Linux ARM in Raspberry Pi Apr 29th, 2013 archlinux rpi This tutorial guides you through the process of installing the ARM flavour of &hellip;">
     
     <meta name="viewport" content="width=device-width">
     
@@ -40,7 +39,7 @@ Arch Linux in &hellip;">
 <ul class="menu pull-right">
   <li><a href="/">blog</a></li>
   <li><a href="/archives/">archives</a></li>
-  <!-- <li><a href="/tags/">tags</a></li> -->
+  <li><a href="/categories/">categories</a></li>
   <li><a href="/projects/">projects</a></li>
   <li><a href="/about/">about</a></li>
 </ul>
@@ -85,6 +84,17 @@ Arch Linux in &hellip;">
 
 
 
+  
+  <div class="pull-left">
+    <i class="icon-tags"></i>
+    <ul class="tags unstyled">
+    
+      <li><a href="/categories/archlinux/">archlinux</a></li>
+    
+      <li><a href="/categories/rpi/">rpi</a></li>
+    
+    </ul>
+  </div>
   
 
     
@@ -302,6 +312,25 @@ memory management at runtime. Make sure that <code>gpu_mem_256</code> (or 512) v
   </ul>
 </section>
 
+<section id="github-repos" class="aside-module grid__item one-whole lap-one-half">
+  <h1 class="title delta">
+    GitHub Repos
+    
+    <small class="pull-right">
+      <a class="btn" href="//github.com/tlatsas" title="@tlatsas on GitHub" target="_blank">
+        <i class="icon-external-link"></i>
+      </a>
+    </small>
+    
+  </h1>
+  <ul id="gh_repos" class="divided">
+    <li class="loading">
+      <i class="icon-spinner icon-spin"></i>
+    </li>
+  </ul>
+</section>
+
+
 
 </div>
 
@@ -353,6 +382,26 @@ memory management at runtime. Make sure that <code>gpu_mem_256</code> (or 512) v
 
 
 
+
+<script>
+  $(document).ready(function(){
+    if (!window.jXHR){
+      var jxhr = document.createElement('script');
+      jxhr.type = 'text/javascript';
+      jxhr.src = '/javascripts/libs/jXHR.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jxhr, s);
+    }
+
+    github.showRepos({
+      user: 'tlatsas',
+      count: 5,
+      skip_forks: false,
+      target: '#gh_repos'
+    });
+  });
+</script>
+<script src="/javascripts/github.js"></script>
 
 
 

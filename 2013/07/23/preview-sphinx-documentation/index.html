@@ -11,8 +11,7 @@
     <title>preview sphinx documentation - > kodama.gr_</title>
     <meta name="author" content="Tasos Latsas">
     
-    <meta name="description" content="preview sphinx documentation Jul 23rd, 2013 I recently released a very small utility called sphinx-serve which
-helps me preview sphinx documentation &hellip;">
+    <meta name="description" content="preview sphinx documentation Jul 23rd, 2013 python sphinx documentation release I recently released a very small utility called sphinx-serve which &hellip;">
     
     <meta name="viewport" content="width=device-width">
     
@@ -40,7 +39,7 @@ helps me preview sphinx documentation &hellip;">
 <ul class="menu pull-right">
   <li><a href="/">blog</a></li>
   <li><a href="/archives/">archives</a></li>
-  <!-- <li><a href="/tags/">tags</a></li> -->
+  <li><a href="/categories/">categories</a></li>
   <li><a href="/projects/">projects</a></li>
   <li><a href="/about/">about</a></li>
 </ul>
@@ -85,6 +84,21 @@ helps me preview sphinx documentation &hellip;">
 
 
 
+  
+  <div class="pull-left">
+    <i class="icon-tags"></i>
+    <ul class="tags unstyled">
+    
+      <li><a href="/categories/python/">python</a></li>
+    
+      <li><a href="/categories/sphinx/">sphinx</a></li>
+    
+      <li><a href="/categories/documentation/">documentation</a></li>
+    
+      <li><a href="/categories/release/">release</a></li>
+    
+    </ul>
+  </div>
   
 
     
@@ -185,6 +199,25 @@ to the sphinx Makefile:</p>
   </ul>
 </section>
 
+<section id="github-repos" class="aside-module grid__item one-whole lap-one-half">
+  <h1 class="title delta">
+    GitHub Repos
+    
+    <small class="pull-right">
+      <a class="btn" href="//github.com/tlatsas" title="@tlatsas on GitHub" target="_blank">
+        <i class="icon-external-link"></i>
+      </a>
+    </small>
+    
+  </h1>
+  <ul id="gh_repos" class="divided">
+    <li class="loading">
+      <i class="icon-spinner icon-spin"></i>
+    </li>
+  </ul>
+</section>
+
+
 
 </div>
 
@@ -236,6 +269,26 @@ to the sphinx Makefile:</p>
 
 
 
+
+<script>
+  $(document).ready(function(){
+    if (!window.jXHR){
+      var jxhr = document.createElement('script');
+      jxhr.type = 'text/javascript';
+      jxhr.src = '/javascripts/libs/jXHR.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jxhr, s);
+    }
+
+    github.showRepos({
+      user: 'tlatsas',
+      count: 5,
+      skip_forks: false,
+      target: '#gh_repos'
+    });
+  });
+</script>
+<script src="/javascripts/github.js"></script>
 
 
 

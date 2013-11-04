@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jekyll | > kodama.gr_]]></title>
+  <link href="http://www.kodama.gr/categories/jekyll/atom.xml" rel="self"/>
+  <link href="http://www.kodama.gr/"/>
+  <updated>2013-11-04T20:58:42+02:00</updated>
+  <id>http://www.kodama.gr/</id>
+  <author>
+    <name><![CDATA[Tasos Latsas]]></name>
+    <email><![CDATA[tlatsas@gmx.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[migrate disqus comments for jekyll's pretty urls]]></title>
+    <link href="http://www.kodama.gr/2012/09/22/migrate-disqus-comments-for-jekyll-pretty-url/"/>
+    <updated>2012-09-22T23:16:05+03:00</updated>
+    <id>http://www.kodama.gr/2012/09/22/migrate-disqus-comments-for-jekyll-pretty-url</id>
+    <content type="html"><![CDATA[<p>I recently enabled the pretty-url feature in Jekyll, which removes the redundant <code>.html</code> suffix in
+URLs. You can enable it by adding <code>permalink: pretty</code> in your <code>_config.yml</code>. This of course
+broke Disqus comments on all existing pages.</p>
+
+<p>Hopefully, this can be easily fixed using the cool migration tools Disqus provides. The concept is to
+write a text file which maps the old URLs to the new ones. The file format should be the like the
+following snippet.</p>
+
+<p><div class="highlight"><pre><code class="perl"><span class="n">old_url1</span><span class="p">,</span> <span class="n">new_url1</span>
+<span class="n">old_url2</span><span class="p">,</span> <span class="n">new_url2</span>
+</code></pre></div></p>
+
+<p>Disqus provides a CSV file which contains all your site’s URLs. To download this file, navigate
+to your site’s admin panel and start the URL mapper tool under tools → migrate threads →
+start URL mapper. Then download the CSV by clicking the <code>download CSV</code> link.</p>
+
+<p>First we need to get rid of the silly windows CRLF line endings from the CSV file.
+A little perl magic can help here.</p>
+
+<p><div class="highlight"><pre><code class="bash">perl -pi -e ‘s/<span class="se">\r\n</span>/<span class="se">\n</span>/g’ disqus-comments-old.csv
+</code></pre></div></p>
+
+<p>Then, we need to format the file accordingly. The new URL is the old one without the <code>.html</code> suffix.</p>
+
+<p><div class="highlight"><pre><code class="text">http://example.com/post.html, http://example.com/post
+</code></pre></div></p>
+
+<p>Again using perl, we can cook a simple script to automate the process.</p>
+
+<p><div class="highlight"><pre><code class="perl"><span class="c1">#!/usr/bin/env perl</span>
+<span class="k">use</span> <span class="n">strict</span><span class="p">;</span><span class="sr">&lt;/p&gt;</span>
+
+<span class="sr">&lt;p&gt;</span><span class="nb">open</span><span class="p">(</span><span class="n">fin</span><span class="p">,</span> <span class="err">‘</span><span class="n">disqus</span><span class="o">-</span><span class="n">comments</span><span class="o">-</span><span class="n">old</span><span class="o">.</span><span class="n">csv</span><span class="err">’</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">die</span> <span class="vg">$!</span><span class="p">;</span>
+<span class="nb">open</span><span class="p">(</span><span class="n">fout</span><span class="p">,</span> <span class="err">‘»’</span><span class="p">,</span> <span class="err">‘</span><span class="n">disqus</span><span class="o">-</span><span class="n">comments</span><span class="o">-</span><span class="k">new</span><span class="o">.</span><span class="n">csv</span><span class="err">’</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">die</span> <span class="vg">$!</span><span class="p">;</span><span class="sr">&lt;/p&gt;</span>
+
+<span class="sr">&lt;p&gt;</span><span class="k">my</span> <span class="nv">$old</span><span class="p">;</span> <span class="c1">#keep the original lines&lt;/p&gt;</span>
+
+<span class="sr">&lt;p&gt;</span><span class="k">while</span><span class="p">(</span><span class="sr">&lt;fin&gt;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">chomp</span><span class="p">;</span>
+    <span class="nv">$old</span> <span class="o">=</span> <span class="s">&quot;$_&quot;</span><span class="p">;</span>
+    <span class="sr">s/\.html/\//</span><span class="p">;</span>
+    <span class="k">print</span> <span class="n">fout</span> <span class="s">&quot;$old, $_\n&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="sr">&lt;/fin&gt;&lt;/p&gt;</span>
+
+<span class="sr">&lt;p&gt;</span><span class="nb">close</span><span class="p">(</span><span class="n">fin</span><span class="p">);</span>
+<span class="nb">close</span><span class="p">(</span><span class="n">fout</span><span class="p">);</span>
+</code></pre></div></p>
+
+<p>I didn’t bother to allow passing the filename as a script argument, so I just ‘hardcoded’
+the filenames in the script. Edit at will and don’t forget to run it from the proper path.</p>
+
+<p>Finally, upload the new CSV file to the URL migration tool and you will have your old comments back.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[generate jekyll front-matter with bash]]></title>
+    <link href="http://www.kodama.gr/2011/08/31/generate-jekyll-front-matter-with-bash/"/>
+    <updated>2011-08-31T23:35:11+03:00</updated>
+    <id>http://www.kodama.gr/2011/08/31/generate-jekyll-front-matter-with-bash</id>
+    <content type="html"><![CDATA[<p>Creating a post in a jekyll-powered blog is pretty straightforward. Just create a file in markdown format and put your post in.
+Every post has a special <a href="https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter">YAML Front Matter</a> block with some variables.
+Using a bash script we can easily generate this file with proper values for the YAML variables.
+For example, for this post, the filename contains the post date and title.</p>
+
+<p><div class="highlight"><pre><code class="text">2011-08-31-generate-jekyll-front-matter-with-bash.markdown
+</code></pre></div></p>
+
+<p>The same values (date, title) are contained in the YAML block inside the file, but a bit more formatted.
+A Bash script can take care the formatting for us by only supplying the post title as the script argument.
+This assumes that the date (and optionally time) are set to the current time we run the bash script.</p>
+
+<p>First we need to grab the date and optionaly the time.</p>
+
+<p><div class="highlight"><pre><code class="bash"><span class="nv">_date</span><span class="o">=</span><span class="k">$(</span>date +’%Y-%m-%d’<span class="k">)</span>
+<span class="nv">_datetime</span><span class="o">=</span><span class="k">$(</span>date +’%Y-%m-%d %H:%M:%S’<span class="k">)</span>
+</code></pre></div></p>
+
+<p><strong>_date</strong> will be used for the filename and <strong>_datetime</strong> for the <em>date</em> variable.</p>
+
+<p>We also need to replace whitespace with dashes in the post title, for use in the filename.</p>
+
+<p><div class="highlight"><pre><code class="bash"><span class="nv">_post</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$1</span> | tr ‘ ‘ ‘-‘<span class="k">)</span>
+</code></pre></div></p>
+
+<p>The filename is supplied a an argument, so we might want to bail if the user does not supply one</p>
+
+<p><div class="highlight"><pre><code class="bash"><span class="k">if</span> <span class="o">[[</span> -z <span class="nv">$1</span> <span class="o">]]</span>; <span class="k">then</span>
+<span class="k">    </span><span class="nb">echo</span> “A post title is required. Bye..”
+    <span class="nb">exit </span>1
+<span class="k">fi</span>
+</code></pre></div></p>
+
+<p>Also, another safe switch would be to check if the file already exists to prevent accidental overwrites.</p>
+
+<p>To do that we need the absolute path for our post file. Putting all these together we have:</p>
+
+<p><div class="highlight"><pre><code class="bash"><span class="nv">_title</span><span class="o">=</span>”<span class="k">${</span><span class="nv">_date</span><span class="k">}</span>-<span class="k">${</span><span class="nv">_post</span><span class="k">}</span>.markdown”
+<span class="nv">_cwd</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+<span class="nv">_post_file</span><span class="o">=</span>”<span class="k">${</span><span class="nv">_cwd</span><span class="k">}</span>/<span class="k">${</span><span class="nv">_title</span><span class="k">}</span>”&lt;/p&gt;
+
+&lt;p&gt;if <span class="o">[[</span> -f <span class="k">${</span><span class="nv">_post_file</span><span class="k">}</span> <span class="o">]]</span>; <span class="k">then</span>
+<span class="k">    </span><span class="nb">echo</span> “File already exists. Bye..”
+    <span class="nb">exit </span>1
+<span class="k">fi</span>
+</code></pre></div></p>
+
+<p>Finally, the magic code that creates our post file uses <a href="http://tldp.org/LDP/abs/html/here-docs.html">here documents</a></p>
+
+<p><div class="highlight"><pre><code class="bash">cat « EOF &amp;gt;| <span class="k">${</span><span class="nv">_post_file</span><span class="k">}</span>
+—
+layout: post
+title: <span class="nv">$1</span>
+date: <span class="nv">$_datetime</span>
+—
+EOF
+</code></pre></div></p>
+
+<p>Make sure to avoid quoting of the <strong>EOF</strong> as bash variable subsitution won’t work.
+Also, note that I used the &gt;| notation because I have the bash <a href="http://www.cyberciti.biz/tips/howto-keep-file-safe-from-overwriting.html">noclobber</a> variable set.</p>
+
+<p>The <a href="https://github.com/tlatsas/utils-scripts/blob/master/jekyll-post">jekyll-post script</a> is on github, also added some code to prompt user for launching a text editor.</p>
+]]></content>
+  </entry>
+  
+</feed>

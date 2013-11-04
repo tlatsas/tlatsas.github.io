@@ -11,7 +11,7 @@
     <title>alsa volume indicator with notifications - > kodama.gr_</title>
     <meta name="author" content="Tasos Latsas">
     
-    <meta name="description" content="alsa volume indicator with notifications Apr 6th, 2011 I recently found a thread in ubuntu forums that explained how to get a gnome-like volume &hellip;">
+    <meta name="description" content="alsa volume indicator with notifications Apr 6th, 2011 alsa I recently found a thread in ubuntu forums that explained how to get a gnome-like volume &hellip;">
     
     <meta name="viewport" content="width=device-width">
     
@@ -39,7 +39,7 @@
 <ul class="menu pull-right">
   <li><a href="/">blog</a></li>
   <li><a href="/archives/">archives</a></li>
-  <!-- <li><a href="/tags/">tags</a></li> -->
+  <li><a href="/categories/">categories</a></li>
   <li><a href="/projects/">projects</a></li>
   <li><a href="/about/">about</a></li>
 </ul>
@@ -84,6 +84,15 @@
 
 
 
+  
+  <div class="pull-left">
+    <i class="icon-tags"></i>
+    <ul class="tags unstyled">
+    
+      <li><a href="/categories/alsa/">alsa</a></li>
+    
+    </ul>
+  </div>
   
 
     
@@ -172,6 +181,25 @@ I recently <a href="http://ubuntuforums.org/showthread.php?p=7241817">found a th
   </ul>
 </section>
 
+<section id="github-repos" class="aside-module grid__item one-whole lap-one-half">
+  <h1 class="title delta">
+    GitHub Repos
+    
+    <small class="pull-right">
+      <a class="btn" href="//github.com/tlatsas" title="@tlatsas on GitHub" target="_blank">
+        <i class="icon-external-link"></i>
+      </a>
+    </small>
+    
+  </h1>
+  <ul id="gh_repos" class="divided">
+    <li class="loading">
+      <i class="icon-spinner icon-spin"></i>
+    </li>
+  </ul>
+</section>
+
+
 
 </div>
 
@@ -223,6 +251,26 @@ I recently <a href="http://ubuntuforums.org/showthread.php?p=7241817">found a th
 
 
 
+
+<script>
+  $(document).ready(function(){
+    if (!window.jXHR){
+      var jxhr = document.createElement('script');
+      jxhr.type = 'text/javascript';
+      jxhr.src = '/javascripts/libs/jXHR.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jxhr, s);
+    }
+
+    github.showRepos({
+      user: 'tlatsas',
+      count: 5,
+      skip_forks: false,
+      target: '#gh_repos'
+    });
+  });
+</script>
+<script src="/javascripts/github.js"></script>
 
 
 

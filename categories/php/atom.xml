@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: php | > kodama.gr_]]></title>
+  <link href="http://www.kodama.gr/categories/php/atom.xml" rel="self"/>
+  <link href="http://www.kodama.gr/"/>
+  <updated>2013-11-04T20:58:42+02:00</updated>
+  <id>http://www.kodama.gr/</id>
+  <author>
+    <name><![CDATA[Tasos Latsas]]></name>
+    <email><![CDATA[tlatsas@gmx.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[sorting null values last in CakePHP]]></title>
+    <link href="http://www.kodama.gr/2012/01/20/sorting-null-values-last-in-CakePHP/"/>
+    <updated>2012-01-20T20:33:42+02:00</updated>
+    <id>http://www.kodama.gr/2012/01/20/sorting-null-values-last-in-CakePHP</id>
+    <content type="html"><![CDATA[<p>Assume your data contain a field with some NULL and some not NULL values.
+If you want to sort your entries against that field in a descending order, NULL
+is interpreted as 0 and entries with NULL in that field go at the bottom.
+This is perfectly desirable. But what if you want to sort them into an ascending order?
+Entries with the NULL field would show up first. In some cases, you might want to sort
+entries with actual data in that field first, and let the rest show up last.</p>
+
+<p>To accomplish that in CakePHP you need two entries of the same field in the order array.
+Assume our model is <strong>House</strong> (which obviously describes some houses) and we want to sort
+against the field <strong>geo_distance</strong> which contains the distance between a particular house and
+some other place. As this is an optional field, it might contain NULL values, but we want
+to promote the houses which contain distance information in the search results.</p>
+
+<p><div class="highlight"><pre><code class="php"><span class="x">$order = array(‘geo_distance’ =&amp;gt; ‘IS NULL ASC’, ‘House.geo_distance’ =&amp;gt; ‘ASC’);</span>
+</code></pre></div></p>
+
+<p>Note that you need the model name for the second array entry in order to trick CakePHP into
+taking it into account.</p>
+]]></content>
+  </entry>
+  
+</feed>
