@@ -2,7 +2,7 @@
 layout: post
 title: reading from named pipes in xmobar
 date: 2013-11-03 17:38:43
-tags: xmobar
+categories: [xmobar, pipes]
 comments: true
 ---
 

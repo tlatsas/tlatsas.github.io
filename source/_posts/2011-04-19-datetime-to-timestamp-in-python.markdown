@@ -2,7 +2,7 @@
 layout: post
 title: datetime to timestamp in python
 date: 2011-04-19 08:51:27 +03:00
-tags: [ python ]
+categories: python
 comments: true
 ---
 Say you got a file's last update time, using the stat command

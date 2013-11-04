@@ -2,7 +2,7 @@
 layout: post
 title: alsa volume indicator with notifications
 date: 2011-04-06 11:03:05 +03:00
-tags: alsa
+categories: alsa
 comments: true
 ---
 ![alsavol](http://farm7.static.flickr.com/6134/5958779113_a15ef21a15_m.jpg){:.right}

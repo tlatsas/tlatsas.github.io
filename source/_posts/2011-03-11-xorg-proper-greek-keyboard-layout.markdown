@@ -2,7 +2,7 @@
 layout: post
 title: xorg - proper greek keyboard layout
 date: 2011-03-11 09:53:39 +02:00
-tags: Xorg
+categories: Xorg
 comments: true
 ---
 I was getting recently a lot random crashes with xfce4-xkb-plugin.

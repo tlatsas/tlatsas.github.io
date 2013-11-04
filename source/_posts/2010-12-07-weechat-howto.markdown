@@ -2,7 +2,7 @@
 layout: post
 title: weechat howto
 date: 2010-12-07 19:49:52 +02:00
-tags: weechat
+categories: weechat
 comments: true
 ---
 ![weechat-front](http://farm7.static.flickr.com/6125/5959339312_4ef9321ec2_m.jpg){:.right}

@@ -2,7 +2,7 @@
 layout: post
 title: using git rebase to remove duplicate cherry-picked commits
 date: 2013-07-28 01:06:37
-tags: git rebase cherry-pick
+categories: [git, rebase, cherry-pick]
 comments: true
 ---
 

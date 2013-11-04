@@ -2,7 +2,7 @@
 layout: post
 title: Archlinux presentation @ Openfest 2011
 date: 2011-04-09 19:10:06 +03:00
-tags: archlinux
+categories: archlinux
 comments: true
 ---
 ![archlinux](http://farm7.static.flickr.com/6125/5959353918_bf30a8fa46_m.jpg){:.left}

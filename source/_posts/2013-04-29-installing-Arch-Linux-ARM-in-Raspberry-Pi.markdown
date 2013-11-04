@@ -2,7 +2,7 @@
 layout: post
 title: installing Arch Linux ARM in Raspberry Pi
 date: 2013-04-29 13:44:38
-tags: archlinux rpi
+categories: [archlinux, rpi]
 comments: true
 ---
 
