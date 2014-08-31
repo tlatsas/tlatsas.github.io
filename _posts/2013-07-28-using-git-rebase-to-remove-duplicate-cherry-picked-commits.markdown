@@ -26,7 +26,7 @@ For our example, we will take the first approach and commit anyway.
 
 So, after some work on the __dev__ branch, the tree will look like this:
 
-![dev branch](/images/dev-branch.png)
+![dev branch](/assets/images/dev-branch.png)
 
 I have used silly commit messages like "cherry-pick this commit" to
 indicate which commits we will cherry-pick into the __master__
@@ -43,7 +43,7 @@ commits on the __master__ branch which introduce
 the changes of these commits. At this point, the state of
 the repo is the following:
 
-![repot state after cherry-pick](/images/after-cp.png)
+![repot state after cherry-pick](/assets/images/after-cp.png)
 
 At some point, we are happy with the work on the __dev__ branch, and
 decide to merge the __dev__ into __master__. However the __master__
@@ -55,7 +55,7 @@ doing __no-fast-forward__ merges. Sometimes this may be desirable, but
 some other times we prefer a linear history. This will be the repository
 state after a merge:
 
-![repo state after merge](/images/no-ff-merge.png)
+![repo state after merge](/assets/images/no-ff-merge.png)
 
 And a `git log --oneline` will look like this:
 
@@ -94,7 +94,7 @@ the duplicate commits. Running:
 
 will bring our repository in the following state:
 
-![repo state after rebase](/images/after-rebase.png)
+![repo state after rebase](/assets/images/after-rebase.png)
 
 As you can see, the cherry-picked commits look like they never
 existed on the __dev__ branch. Also, now we can use a __fast-forward__

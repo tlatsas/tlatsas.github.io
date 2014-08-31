@@ -1,11 +1,14 @@
 ---
 layout: default
+is_front: true
 ---
 
 <div class="home">
 
+  <h1>Recent posts</h1>
+
   <ul class="posts">
-    {% for post in site.posts %}
+    {% for post in site.posts | limit:5 %}
       <li>
         <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
