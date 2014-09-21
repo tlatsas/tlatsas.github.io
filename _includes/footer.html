@@ -4,37 +4,66 @@
 
     <div class="footer-col-1 column">
       <ul>
-        <li>{{ site.title }}</li>
-        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li>
+            <i class="fa fa-copyright"> 2009-201[0-9]+</i>
+        </li>
+          <li>Content under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/ie/">CC</a>
+          </li>
+          <li>
+              <i class="fa fa-rss"></i>
+              <a href="{{ "/atom.xml" | prepend: site.baseurl }}">
+              <span class="username">RSS feed</span>
+              </a>
+          </li>
+
       </ul>
     </div>
 
     <div class="footer-col-2 column">
       <ul>
-        {% if site.github_username %}<li>
+        {% if site.social.github %}<li>
           <i class="fa fa-github-alt"></i>
-          <a href="https://github.com/{{ site.github_username }}">
-            <span class="username">github</span>
+          <a href="https://github.com/{{ site.social.github }}">
+            <span class="username">Github</span>
           </a>
         </li>{% endif %}
-        {% if site.twitter_username %}<li>
+        {% if site.social.twitter %}<li>
           <i class="fa fa-twitter"></i>
-          <a href="https://twitter.com/{{ site.twitter_username }}">
-            <span class="username">twitter</span>
+          <a href="https://twitter.com/{{ site.social.twitter }}">
+            <span class="username">Twitter</span>
           </a>
         </li>{% endif %}
-        <li>
-            <i class="fa fa-rss"></i>
-            <a href="{{ "/atom.xml" | prepend: site.baseurl }}">
-                <span class="username">rss</span>
-            </a>
-        </li>
+        {% if site.social.linkedin %}<li>
+          <i class="fa fa-linkedin"></i>
+          <a href="http://www.linkedin.com/in/{{ site.social.linkedin }}">
+              <span class="username">LinkedIn</span>
+          </a>
+      </li>{% endif %}
       </ul>
     </div>
 
     <div class="footer-col-3 column">
-      <p class="text">{{ site.description }}</p>
-    </div>
+        <ul>
+            {% if site.social.googleplus %}<li>
+            <i class="fa fa-google-plus"></i>
+            <a href="https://plus.google.com/{{ site.social.googleplus }}">
+                <span class="username">Google+</span>
+            </a>
+        </li>{% endif %}
+            {% if site.social.stackoverflow %}<li>
+            <i class="fa fa-stack-overflow"></i>
+            <a href="http://stackoverflow.com/users/{{ site.social.stackoverflow }}">
+                <span class="username">Stack Oveflow</span>
+            </a>
+        </li>{% endif %}
+            {% if site.social.spotify %}<li>
+            <i class="fa fa-spotify"></i>
+            <a href="http://open.spotify.com/user/{{ site.social.spotify }}">
+                <span class="username">Spotify</span>
+            </a>
+        </li>{% endif %}
+        </ul>
+      </div>
   </div>
 
 </footer>
