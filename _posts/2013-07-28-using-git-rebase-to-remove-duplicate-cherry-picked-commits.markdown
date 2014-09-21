@@ -32,9 +32,11 @@ I have used silly commit messages like "cherry-pick this commit" to
 indicate which commits we will cherry-pick into the __master__
 branch. Let's do that now:
 
-    $ git checkout master
-    $ git cherry-pick e22c44f
-    $ git cherry-pick 1a2929a
+{% highlight text %}
+$ git checkout master
+$ git cherry-pick e22c44f
+$ git cherry-pick 1a2929a
+{% endhighlight %}
 
 If we use `git log` on master, we will notice that we have our new
 commits, but with different SHA-1 hashes. This is happening because when
@@ -59,18 +61,20 @@ state after a merge:
 
 And a `git log --oneline` will look like this:
 
-    b05bcc3 Merge branch 'dev'
-    b47ebea 2nd commit to cherry-pick
-    9d190e9 cherry pick this commit
-    8c0a87e some more work before merging
-    d1c9568 2nd commit to cherry-pick
-    9d4575e even more commits
-    790c30a some more commits!
-    ac60758 more commits on dev branch
-    03725e0 cherry pick this commit
-    2e106d4 1st commit at dev branch
-    ee38cc6 second commit at master
-    444357a initial commit
+{% highlight text %}
+b05bcc3 Merge branch 'dev'
+b47ebea 2nd commit to cherry-pick
+9d190e9 cherry pick this commit
+8c0a87e some more work before merging
+d1c9568 2nd commit to cherry-pick
+9d4575e even more commits
+790c30a some more commits!
+ac60758 more commits on dev branch
+03725e0 cherry pick this commit
+2e106d4 1st commit at dev branch
+ee38cc6 second commit at master
+444357a initial commit
+{% endhighlight %}
 
 Notice that except from the (ugly) new commit on top, we also ended up
 with duplicate commits for each cherry-picked commit. Also, if you care
@@ -89,8 +93,10 @@ changes. When rebase will start to re-apply our work, it is smart
 enough to not apply the same changes the second time, and thus removing
 the duplicate commits. Running:
 
-    git checkout dev
-    git rebase master
+{% highlight text %}
+git checkout dev
+git rebase master
+{% endhighlight %}
 
 will bring our repository in the following state:
 
@@ -100,8 +106,10 @@ As you can see, the cherry-picked commits look like they never
 existed on the __dev__ branch. Also, now we can use a __fast-forward__
 merge:
 
-    git checkout master
-    git merge --ff dev
+{% highlight text %}
+git checkout master
+git merge --ff dev
+{% endhighlight %}
 
 You can find more information about rebasing and cherry-pick at the
 [git-book](http://git-scm.com/) and the relevant
