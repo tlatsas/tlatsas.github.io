@@ -5,7 +5,7 @@ is_front: true
 
 <div class="home">
 
-  <h1>Recent posts</h1>
+  <h1>recent posts</h1>
 
   <ul class="posts">
     {% for post in site.posts | limit:5 %}
