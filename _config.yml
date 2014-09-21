@@ -1,6 +1,6 @@
 url: http://www.kodama.gr
 title: "> kodama.gr_"
-subtitle: 
+subtitle: Random rantings
 author: Tasos Latsas
 #simple_search: http://google.com/search
 description:
@@ -40,5 +40,11 @@ disqus_short_name: tlgh
 disqus_show_comment_count: false
 
 timezone: Athens/Greece
-github_username: tlatsas
-twitter_username: tlatsas
+
+social:
+  github: tlatsas
+  twitter: tlatsas
+  googleplus: 113297710160205489384
+  linkedin: tasoslatsas
+  stackoverflow: 1208521
+  spotify: tasidus
