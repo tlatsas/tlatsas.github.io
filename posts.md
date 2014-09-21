@@ -1,10 +1,10 @@
 ---
-layout: post
-title: Posts
+layout: page
+title: all posts
 permalink: /posts/
 ---
 
-<div class="home">
+<div class="home page">
 
   <ul class="posts">
     {% for post in site.posts %}
