@@ -48,3 +48,6 @@ social:
   linkedin: tasoslatsas
   stackoverflow: 1208521
   spotify: tasidus
+
+gems:
+  - jekyll-sitemap
