@@ -2,7 +2,7 @@
 layout: post
 title: reading from named pipes in xmobar
 date: 2013-11-03 17:38:43
-categories: [xmobar, pipes]
+categories: [xmobar, named pipes, volume control]
 comments: true
 ---
 
