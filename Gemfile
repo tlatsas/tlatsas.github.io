@@ -1,4 +1,4 @@
 source "https://rubygems.org"
 
-gem 'github-pages', '~> 33'
-gem 'jekyll-sitemap'
+gem 'github-pages', group: :jekyll_plugins
+gem 'jekyll-sitemap', group: :jekyll_plugins

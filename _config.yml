@@ -16,7 +16,6 @@ timezone: Europe/Athens
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email: tlatsas@kodama.gr
 
 root: /
 permalink: /:year/:month/:day/:title/
@@ -26,7 +25,6 @@ permalink: /:year/:month/:day/:title/
 #code_dir: downloads/code
 category_dir: categories
 markdown: kramdown
-highlighter: pygments # default python pygments have been replaced by pygments.rb
 
 #paginate: 10          # Posts per page on the blog index
 #pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
@@ -39,15 +37,13 @@ highlighter: pygments # default python pygments have been replaced by pygments.r
 disqus_short_name: tlgh
 disqus_show_comment_count: false
 
-timezone: Athens/Greece
-
 social:
   github: tlatsas
   twitter: tlatsas
-  googleplus: 113297710160205489384
   linkedin: tasoslatsas
-  stackoverflow: 1208521
-  spotify: tasidus
 
-gems:
+plugins:
   - jekyll-sitemap
+
+exclude:
+  - .idea
