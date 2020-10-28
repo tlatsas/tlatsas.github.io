@@ -1,42 +1,22 @@
 url: http://www.kodama.gr
 title: "> kodama.gr_"
-subtitle: Random rantings
+subtitle:
 author: Tasos Latsas
 #simple_search: http://google.com/search
 description:
 
+root: /
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
 # Additionally, %o will give you the ordinal representation of the day
 date_format: "ordinal"
 timezone: Europe/Athens
-
-# RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
-subscribe_email:
-# RSS feeds can list your email address if you like
-
-root: /
 permalink: /:year/:month/:day/:title/
-#source: source
-#destination: public
-#plugins: plugins
-#code_dir: downloads/code
+paginate_path: /posts/:num/
+paginate: 5
 category_dir: categories
 markdown: kramdown
-
-#paginate: 10          # Posts per page on the blog index
-#pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
-#recent_posts: 5       # Posts in the sidebar Recent Posts section
-#excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
-
-#titlecase: true       # Converts page and post titles to titlecase
-
-# Disqus Comments
-disqus_short_name: tlgh
-disqus_show_comment_count: false
-
 social:
   github: tlatsas
   twitter: tlatsas
@@ -44,6 +24,9 @@ social:
 
 plugins:
   - jekyll-sitemap
+  - jekyll-paginate
 
 exclude:
   - .idea
+
+theme: jekyll-whiteglass
