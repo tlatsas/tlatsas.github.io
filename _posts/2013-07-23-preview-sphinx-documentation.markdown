@@ -25,9 +25,9 @@ the __singlehtml__ folder if `--single` is supplied.
 It is handy to add the sphinx-serve command with any required arguments
 to the sphinx Makefile:
 
-{% highlight make %}
-    preview:
-        sphinx-serve --single --port 4000
+{% highlight text %}
+preview:
+    sphinx-serve --single --port 4000
 {% endhighlight %}
 
 now you can easily preview your documentation by issuing `make preview`.
