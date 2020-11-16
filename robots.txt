@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://www.kodama.gr/sitemap.xml 
+Sitemap: http://www.kodama.gr/sitemap.xml

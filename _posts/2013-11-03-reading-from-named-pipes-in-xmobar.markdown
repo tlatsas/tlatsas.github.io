@@ -35,7 +35,7 @@ echo "something" > /tmp/.volume-pipe
 
 In order to display the volume information we will create a small script which can be used to increase/decrease/mute/show the volume levels. After each operation it will send the output to the named pipe. I already have [a script](https://github.com/tlatsas/dotfiles/blob/master/bin/alsavol) I use for this purpose, but let's write something simpler.
 
-{% highlight bash linenos=table %}
+{% highlight bash %}
 #!/usr/bin/bash
 
 get_volume() {
