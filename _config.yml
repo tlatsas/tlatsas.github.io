@@ -1,9 +1,5 @@
-url: http://www.kodama.gr
-title: "> kodama.gr_"
-subtitle:
+url: "https://tlatsas.github.io"
 author: Tasos Latsas
-#simple_search: http://google.com/search
-description:
 
 root: /
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
@@ -17,10 +13,6 @@ paginate_path: /posts/:num/
 paginate: 5
 category_dir: categories
 markdown: kramdown
-social:
-  github: tlatsas
-  twitter: tlatsas
-  linkedin: tasoslatsas
 
 plugins:
   - jekyll-sitemap
