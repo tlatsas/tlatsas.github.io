@@ -20,6 +20,7 @@ plugins:
   - jekyll-paginate
 
 exclude:
-  - .idea
+  - Gemfile
+  - Gemfile.lock
 
 remote_theme: yous/whiteglass
