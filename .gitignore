@@ -1,0 +1,11 @@
+.bundle
+.DS_Store
+.sass-cache
+.gist-cache
+_site
+vendor
+node_modules
+*.swp
+*.idea
+*.iml
+.jekyll-metadata
